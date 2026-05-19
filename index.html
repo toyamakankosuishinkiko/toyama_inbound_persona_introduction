@@ -1,0 +1,3262 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>富山県インバウンド ペルソナ図鑑 2026 ｜ 8か国×5パターン</title>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;600;900&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --teal:#4DB5B0; --teal-dark:#3A9591; --teal-pale:#F4FAF9; --teal-light:#E8F4F3;
+  --navy:#1E3A8A; --navy-dark:#152960; --navy-light:#E8EDF5;
+  --ink:#1A1A1A; --gray-700:#555; --gray-500:#888; --gray-300:#D4D4D4;
+  --gray-200:#E8E8E8; --gray-100:#F4F4F4; --gray-50:#FAFAFA;
+  --paper:#FBFAF7; --cream:#F7F2E8; --accent:#D97757; --gold:#C9A961;
+  --sans:'Noto Sans JP','Hiragino Sans','Yu Gothic',sans-serif;
+  --serif:'Noto Serif JP','Yu Mincho','Hiragino Mincho ProN',serif;
+  --mono:'JetBrains Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);color:var(--ink);background:var(--paper);
+     line-height:1.8;font-feature-settings:"palt";font-size:14px;}
+
+.container{max-width:1200px;margin:0 auto;padding:0 48px;}
+
+/* ============ COVER ============ */
+.cover{position:relative;padding:120px 0 100px;
+  background:linear-gradient(135deg,var(--paper) 0%,var(--cream) 100%);overflow:hidden;}
+.cover::before{content:"";position:absolute;top:-15%;right:-10%;width:600px;height:600px;
+  background:radial-gradient(circle,rgba(77,181,176,0.20) 0%,transparent 70%);border-radius:50%;}
+.cover::after{content:"";position:absolute;bottom:-20%;left:-10%;width:700px;height:700px;
+  background:radial-gradient(circle,rgba(30,58,138,0.10) 0%,transparent 70%);border-radius:50%;}
+.cover-inner{position:relative;z-index:2;}
+.cover-eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:0.35em;
+  color:var(--teal-dark);margin-bottom:32px;text-transform:uppercase;}
+.cover-eyebrow::before{content:"—— ";}
+.cover-title{font-family:var(--serif);font-size:clamp(40px,5.5vw,68px);
+  font-weight:900;line-height:1.25;color:var(--ink);margin-bottom:28px;letter-spacing:-0.01em;}
+.cover-title .accent{color:var(--navy);position:relative;display:inline-block;}
+.cover-title .accent::after{content:"";position:absolute;bottom:8px;left:0;width:100%;
+  height:14px;background:var(--teal);opacity:0.35;z-index:-1;}
+.cover-subtitle{font-family:var(--sans);font-size:18px;color:var(--gray-700);
+  max-width:780px;margin-bottom:56px;line-height:1.9;font-weight:400;}
+.cover-meta{display:flex;gap:40px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;
+  color:var(--gray-500);letter-spacing:0.12em;text-transform:uppercase;
+  padding-top:28px;border-top:1px solid var(--gray-300);}
+.cover-meta span b{color:var(--ink);font-family:var(--sans);font-weight:500;
+  letter-spacing:0;text-transform:none;}
+.cover-link{display:inline-block;margin-top:32px;padding:14px 28px;
+  background:var(--navy);color:white;text-decoration:none;font-size:13px;
+  font-weight:500;border-radius:2px;transition:all 0.2s;letter-spacing:0.05em;}
+.cover-link:hover{background:var(--navy-dark);transform:translateY(-2px);}
+
+/* ============ INTRO / TOC ============ */
+.intro{padding:80px 0;background:white;border-top:1px solid var(--gray-200);
+  border-bottom:1px solid var(--gray-200);}
+.intro-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:64px;align-items:start;}
+.intro-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:0.25em;
+  color:var(--teal-dark);text-transform:uppercase;margin-bottom:14px;}
+.intro-title{font-family:var(--serif);font-size:32px;font-weight:900;line-height:1.4;
+  margin-bottom:24px;color:var(--ink);}
+.intro-lead{font-size:14.5px;color:var(--gray-700);line-height:1.95;margin-bottom:18px;}
+
+.toc{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.toc-item{display:flex;align-items:baseline;gap:14px;padding:18px 20px;
+  background:var(--paper);border-left:3px solid var(--teal);
+  text-decoration:none;color:var(--ink);transition:all 0.25s;border-radius:0 2px 2px 0;}
+.toc-item:hover{background:var(--teal-pale);transform:translateX(4px);
+  border-left-color:var(--navy);}
+.toc-rank{font-family:var(--mono);font-size:11px;color:var(--gray-500);min-width:30px;}
+.toc-country{font-family:var(--sans);font-weight:700;font-size:15px;color:var(--ink);}
+.toc-n{font-family:var(--mono);font-size:10.5px;color:var(--gray-500);margin-left:auto;}
+
+/* ============ COUNTRY SECTION ============ */
+.country-section{padding:96px 0 64px;border-top:1px solid var(--gray-200);
+  position:relative;background:var(--paper);}
+.country-section:nth-child(even){background:white;}
+
+.country-banner{display:grid;grid-template-columns:140px 1fr auto;gap:40px;
+  padding:48px 56px;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-dark) 100%);
+  color:white;border-radius:8px;margin-bottom:56px;position:relative;overflow:hidden;}
+.country-banner::before{content:"";position:absolute;top:-50%;right:-10%;width:500px;height:500px;
+  background:radial-gradient(circle,rgba(77,181,176,0.28) 0%,transparent 65%);}
+.country-banner::after{content:"";position:absolute;bottom:-30%;left:30%;width:300px;height:300px;
+  background:radial-gradient(circle,rgba(201,169,97,0.18) 0%,transparent 60%);}
+.country-banner > *{position:relative;z-index:1;}
+.country-rank-huge{font-family:var(--serif);font-size:90px;font-weight:900;
+  color:var(--teal);line-height:1;letter-spacing:-0.04em;align-self:center;}
+.country-info{align-self:center;}
+.country-en{font-family:var(--mono);font-size:12px;letter-spacing:0.3em;
+  color:var(--teal);text-transform:uppercase;margin-bottom:10px;}
+.country-jp{font-family:var(--serif);font-size:36px;font-weight:900;
+  line-height:1.2;margin-bottom:14px;letter-spacing:-0.01em;}
+.country-tagline{font-size:14.5px;line-height:1.85;color:rgba(255,255,255,0.92);
+  max-width:560px;font-weight:300;}
+.country-stats{align-self:center;display:flex;flex-direction:column;gap:14px;
+  text-align:right;}
+.country-stat{font-family:var(--mono);font-size:11px;letter-spacing:0.1em;
+  color:rgba(255,255,255,0.65);text-transform:uppercase;}
+.country-stat b{display:block;font-family:var(--serif);font-size:30px;font-weight:900;
+  color:white;letter-spacing:-0.02em;line-height:1.1;margin-top:4px;}
+
+/* 国概観：縦棒４つ */
+.country-vitals{display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  margin-bottom:64px;background:white;border:1px solid var(--gray-200);
+  border-radius:6px;overflow:hidden;}
+.vital{padding:24px 28px;border-right:1px solid var(--gray-200);}
+.vital:last-child{border-right:none;}
+.vital-label{font-family:var(--mono);font-size:10px;color:var(--gray-500);
+  letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px;}
+.vital-main{font-family:var(--serif);font-size:22px;font-weight:900;color:var(--navy);
+  line-height:1.2;margin-bottom:4px;letter-spacing:-0.01em;}
+.vital-sub{font-size:11.5px;color:var(--gray-700);line-height:1.55;}
+
+/* ============ PERSONA CARDS ============ */
+.persona-section-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:0.25em;
+  color:var(--teal-dark);text-transform:uppercase;margin-bottom:12px;}
+.persona-section-title{font-family:var(--serif);font-size:28px;font-weight:900;
+  margin-bottom:8px;color:var(--ink);}
+.persona-section-lead{font-size:13.5px;color:var(--gray-700);margin-bottom:36px;
+  max-width:780px;line-height:1.85;}
+
+.persona-card{background:white;border:1px solid var(--gray-200);border-radius:8px;
+  margin-bottom:32px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+.persona-header{display:grid;grid-template-columns:96px 1fr auto;gap:28px;
+  padding:32px 40px 28px;border-bottom:1px solid var(--gray-200);
+  background:linear-gradient(135deg,white 0%,var(--cream) 100%);align-items:center;}
+.persona-portrait{width:96px;height:96px;border-radius:50%;
+  background:linear-gradient(135deg,var(--navy) 0%,var(--teal) 100%);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:38px;font-weight:900;color:white;letter-spacing:-0.02em;}
+.persona-headline{}
+.persona-no{font-family:var(--mono);font-size:11px;color:var(--teal-dark);
+  letter-spacing:0.2em;margin-bottom:6px;}
+.persona-name{font-family:var(--serif);font-size:24px;font-weight:900;
+  color:var(--ink);margin-bottom:4px;line-height:1.25;}
+.persona-name .name-en{font-family:var(--mono);font-size:13px;font-weight:400;
+  color:var(--gray-500);margin-left:10px;letter-spacing:0.08em;}
+.persona-catch{font-size:14px;color:var(--gray-700);font-weight:500;font-style:italic;}
+.persona-tag{padding:6px 14px;background:var(--navy);color:white;font-family:var(--mono);
+  font-size:10.5px;letter-spacing:0.15em;text-transform:uppercase;border-radius:2px;
+  white-space:nowrap;align-self:start;margin-top:8px;}
+
+.persona-body{padding:36px 40px;display:grid;grid-template-columns:1.1fr 1fr;gap:40px;}
+.persona-col h4{font-family:var(--sans);font-size:11px;font-weight:700;
+  color:var(--teal-dark);letter-spacing:0.18em;text-transform:uppercase;
+  margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--teal-light);}
+
+/* プロフィール */
+.profile-list{list-style:none;padding:0;margin-bottom:28px;}
+.profile-list li{display:grid;grid-template-columns:90px 1fr;gap:14px;
+  padding:8px 0;font-size:13px;border-bottom:1px dotted var(--gray-200);}
+.profile-list li:last-child{border-bottom:none;}
+.profile-list .pk{color:var(--gray-500);font-weight:500;font-size:11.5px;
+  letter-spacing:0.05em;align-self:start;padding-top:2px;}
+.profile-list .pv{color:var(--ink);line-height:1.65;}
+
+/* 引用 */
+.persona-quote{position:relative;padding:24px 28px;margin:24px 0;
+  background:var(--teal-pale);border-left:4px solid var(--teal);border-radius:0 4px 4px 0;
+  font-family:var(--serif);font-size:15px;line-height:1.85;color:var(--ink);
+  font-weight:500;font-style:italic;}
+.persona-quote::before{content:""";position:absolute;top:-10px;left:14px;
+  font-family:var(--serif);font-size:48px;color:var(--teal);font-weight:900;
+  line-height:1;font-style:normal;}
+
+/* バリュー */
+.value-list{list-style:none;padding:0;}
+.value-list li{padding:10px 0 10px 24px;font-size:13px;color:var(--gray-700);
+  line-height:1.7;position:relative;border-bottom:1px dotted var(--gray-200);}
+.value-list li:last-child{border-bottom:none;}
+.value-list li::before{content:"◆";position:absolute;left:0;top:10px;
+  color:var(--teal);font-size:10px;}
+
+/* 旅マエ・旅ナカ・旅アト タイムライン */
+.timeline{margin:32px 0;padding:32px 40px;background:var(--gray-50);border-radius:6px;}
+.timeline-title{font-family:var(--sans);font-size:11px;font-weight:700;
+  color:var(--teal-dark);letter-spacing:0.18em;text-transform:uppercase;
+  margin-bottom:20px;}
+.tl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative;}
+.tl-grid::before{content:"";position:absolute;top:18px;left:8%;right:8%;
+  height:2px;background:repeating-linear-gradient(90deg,var(--teal) 0,var(--teal) 6px,
+  transparent 6px,transparent 12px);}
+.tl-step{padding:0 20px;position:relative;}
+.tl-step:first-child{padding-left:0;}
+.tl-step:last-child{padding-right:0;}
+.tl-step-icon{width:36px;height:36px;border-radius:50%;background:var(--navy);
+  color:white;display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:11px;font-weight:700;margin-bottom:14px;
+  position:relative;z-index:1;letter-spacing:0.05em;}
+.tl-label{font-family:var(--sans);font-size:13px;font-weight:700;color:var(--ink);
+  margin-bottom:8px;}
+.tl-text{font-size:12.5px;color:var(--gray-700);line-height:1.75;}
+
+/* インサイト＋施策 */
+.insight-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;
+  padding:24px 40px 36px;background:var(--navy-light);
+  border-top:1px solid var(--gray-200);}
+.insight-block{padding:20px 22px;background:white;border-radius:4px;}
+.insight-block.action{background:var(--navy);color:white;}
+.insight-h{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;
+  color:var(--teal-dark);text-transform:uppercase;margin-bottom:10px;font-weight:500;}
+.insight-block.action .insight-h{color:var(--teal);}
+.insight-t{font-family:var(--serif);font-size:14.5px;font-weight:700;line-height:1.7;
+  margin-bottom:8px;color:var(--ink);}
+.insight-block.action .insight-t{color:white;}
+.insight-d{font-size:12.5px;line-height:1.75;color:var(--gray-700);}
+.insight-block.action .insight-d{color:rgba(255,255,255,0.85);}
+
+/* データ根拠フッター */
+.persona-data{padding:18px 40px;background:var(--gray-50);
+  border-top:1px solid var(--gray-200);font-family:var(--mono);font-size:10.5px;
+  color:var(--gray-500);letter-spacing:0.05em;line-height:1.7;
+  display:flex;flex-wrap:wrap;gap:14px;}
+.persona-data b{color:var(--ink);font-family:var(--sans);}
+
+/* レスポンシブ */
+@media(max-width:900px){
+  .container{padding:0 24px;}
+  .country-banner{grid-template-columns:1fr;text-align:center;padding:32px 24px;}
+  .country-stats{text-align:center;}
+  .country-vitals{grid-template-columns:1fr 1fr;}
+  .vital{border-right:none;border-bottom:1px solid var(--gray-200);}
+  .persona-header{grid-template-columns:1fr;text-align:center;}
+  .persona-portrait{margin:0 auto;}
+  .persona-body{grid-template-columns:1fr;}
+  .tl-grid{grid-template-columns:1fr;gap:20px;}
+  .tl-grid::before{display:none;}
+  .insight-grid{grid-template-columns:1fr;}
+  .intro-grid{grid-template-columns:1fr;}
+  .toc{grid-template-columns:1fr;}
+}
+
+/* フッター */
+footer{padding:48px 0 64px;background:var(--ink);color:white;text-align:center;
+  font-size:12px;letter-spacing:0.08em;}
+footer a{color:var(--teal);text-decoration:none;margin:0 12px;}
+</style>
+</head>
+<body>
+
+<!-- ============== COVER ============== -->
+<section class="cover">
+  <div class="container cover-inner">
+    <div class="cover-eyebrow">Toyama Inbound Persona Atlas 2026</div>
+    <h1 class="cover-title">
+      40人の旅人が物語る、<br>
+      <span class="accent">富山インバウンド</span>のリアル
+    </h1>
+    <p class="cover-subtitle">
+      2026年に富山県を訪れた、または通過した 2,032 名のリアルな声から、
+      上位8か国 × 各5パターンの旅行者像を抽出。
+      属性データに、文化的背景・行動シナリオ・響くメッセージを重ね合わせ、
+      40人の "実在しそうな旅人" として描き出しました。
+      マーケティング施策・プロモーション素材・パートナー連携設計の起点として。
+    </p>
+    <a href="https://toyamakankosuishinkiko.github.io/toyama_inbound_persona/" 
+       class="cover-link" target="_blank">▸ 既存：国別特徴レポートを見る</a>
+    <div class="cover-meta">
+      <span>調査期間 <b>2026年1月〜</b></span>
+      <span>有効回答 <b>n = 2,032</b></span>
+      <span>対象 <b>上位8か国 × 5ペルソナ ＝ 40人</b></span>
+      <span>発行 <b>（公社）とやま観光推進機構</b></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============== INTRO / TOC ============== -->
+<section class="intro">
+  <div class="container">
+    <div class="intro-grid">
+      <div>
+        <div class="intro-eyebrow">— About this Atlas</div>
+        <h2 class="intro-title">なぜ "40人の物語" なのか</h2>
+        <p class="intro-lead">
+          国別の集計データは、マーケット全体の輪郭を捉えるには有効です。
+          しかし「誰に、何を、どう届けるか」を考えるためには、
+          数字の向こうにいる<b>一人の顔</b>が必要になります。
+        </p>
+        <p class="intro-lead">
+          本アトラスでは、各国の回答データを「年齢層 × 同行形態」を基本軸に、
+          国によっては「出発地」「一人旅比率」など特徴的な切り口を追加して、
+          5つの代表的なセグメントを抽出。各セグメントの実回答プロファイルに、
+          国別の文化的背景と旅行トレンドを重ね、
+          ストーリーを持った人物像として再構成しています。
+        </p>
+        <p class="intro-lead">
+          属性データは実回答ベース。ストーリー部分（名前・職業・価値観・行動シナリオ）は、
+          データの裏付けに基づく示唆として読んでいただければと思います。
+        </p>
+      </div>
+      <div>
+        <div class="toc">
+          <a class="toc-item" href="#tw">
+            <span class="toc-rank">01</span>
+            <span class="toc-country">台湾</span>
+            <span class="toc-n">n=284</span>
+          </a>
+          <a class="toc-item" href="#au">
+            <span class="toc-rank">02</span>
+            <span class="toc-country">オーストラリア</span>
+            <span class="toc-n">n=266</span>
+          </a>
+          <a class="toc-item" href="#us">
+            <span class="toc-rank">03</span>
+            <span class="toc-country">アメリカ</span>
+            <span class="toc-n">n=182</span>
+          </a>
+          <a class="toc-item" href="#cn">
+            <span class="toc-rank">04</span>
+            <span class="toc-country">中国</span>
+            <span class="toc-n">n=175</span>
+          </a>
+          <a class="toc-item" href="#id">
+            <span class="toc-rank">05</span>
+            <span class="toc-country">インドネシア</span>
+            <span class="toc-n">n=126</span>
+          </a>
+          <a class="toc-item" href="#th">
+            <span class="toc-rank">06</span>
+            <span class="toc-country">タイ</span>
+            <span class="toc-n">n=98</span>
+          </a>
+          <a class="toc-item" href="#uk">
+            <span class="toc-rank">07</span>
+            <span class="toc-country">イギリス</span>
+            <span class="toc-n">n=80</span>
+          </a>
+          <a class="toc-item" href="#de">
+            <span class="toc-rank">08</span>
+            <span class="toc-country">ドイツ</span>
+            <span class="toc-n">n=75</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================ -->
+<!-- ============== 01. 台湾 (TAIWAN) ============== -->
+<!-- ============================================================ -->
+<section class="country-section" id="tw">
+  <div class="container">
+
+    <!-- バナー -->
+    <div class="country-banner">
+      <div class="country-rank-huge">01</div>
+      <div class="country-info">
+        <div class="country-en">— TAIWAN ／ 台湾</div>
+        <h2 class="country-jp">"金沢の隣の宝物"を探しに来る三世代</h2>
+        <p class="country-tagline">
+          全回答の14.0%を占める最大マーケット。家族51%・40代30%という強烈な家族旅行国家。
+          金沢から新幹線で30分、関空・中部・小松空港を起点に、富山を「金沢ついでの半日プラン」として組み込む層が中心。
+          リピーターの種は、紙のガイドブックと "家族・友人の口コミ" に眠っている。
+        </p>
+      </div>
+      <div class="country-stats">
+        <div class="country-stat">回答数<b>284</b></div>
+        <div class="country-stat">家族同行<b>51%</b></div>
+        <div class="country-stat">日帰り率<b>39%</b></div>
+      </div>
+    </div>
+
+    <!-- 国の特徴 -->
+    <div class="country-vitals">
+      <div class="vital">
+        <div class="vital-label">主力ボリューム層</div>
+        <div class="vital-main">40代 × 家族</div>
+        <div class="vital-sub">国内全体平均比 +13pt の40代ボリューム</div>
+      </div>
+      <div class="vital">
+        <div class="vital-label">起点となる動線</div>
+        <div class="vital-main">金沢 46%</div>
+        <div class="vital-sub">全体平均より +18.7pt。金沢戦略が鍵</div>
+      </div>
+      <div class="vital">
+        <div class="vital-label">特異な認知経路</div>
+        <div class="vital-main">ガイドブック 19%</div>
+        <div class="vital-sub">全体平均より +10pt。紙メディアが効く</div>
+      </div>
+      <div class="vital">
+        <div class="vital-label">最大の潜在ニーズ</div>
+        <div class="vital-main">庄川峡遊覧船</div>
+        <div class="vital-sub">行きたい103 vs 訪問予定25。Gap=78</div>
+      </div>
+    </div>
+
+    <div class="persona-section-eyebrow">— 5 PERSONAS</div>
+    <h3 class="persona-section-title">台湾の5人</h3>
+    <p class="persona-section-lead">
+      40代家族のボリューム層を起点に、19歳以下を含む親子三世代旅行、
+      40代の男友達グループ、シニア家族、若い社会人の家族孝行旅行まで。
+      台湾の家族文化と金沢ハブの掛け算が、富山訪問の主旋律を成している。
+    </p>
+
+    <!-- ===== TW-01: 40代×家族 ===== -->
+    <article class="persona-card">
+      <div class="persona-header">
+        <div class="persona-portrait">林</div>
+        <div class="persona-headline">
+          <div class="persona-no">PERSONA TW-01 ／ 40代 × 家族 ／ n=42 ／ 構成比 14.8%</div>
+          <h4 class="persona-name">林 雅婷（リン・ヤーティン）<span class="name-en">Lin Ya-ting, 43</span></h4>
+          <p class="persona-catch">"小学生の娘と両親を連れて、金沢ついでに半日富山。"</p>
+        </div>
+        <span class="persona-tag">主力ボリューム</span>
+      </div>
+
+      <div class="persona-body">
+        <div class="persona-col">
+          <h4>PROFILE</h4>
+          <ul class="profile-list">
+            <li><span class="pk">年齢／性別</span><span class="pv">43歳・女性（実回答女性比 66.7%）</span></li>
+            <li><span class="pk">居住地</span><span class="pv">台北市・新北市の郊外戸建て</span></li>
+            <li><span class="pk">職業</span><span class="pv">外資系メーカーのマーケティング担当</span></li>
+            <li><span class="pk">世帯年収</span><span class="pv">NT$ 180〜220万（約840〜1,030万円）</span></li>
+            <li><span class="pk">家族構成</span><span class="pv">夫・小学生の娘・70代の両親（しばしば同行）</span></li>
+            <li><span class="pk">動線</span><span class="pv">関西国際空港 → 京都・大阪3泊 → 金沢2泊 → 富山日帰り → 名古屋経由帰国</span></li>
+            <li><span class="pk">滞在</span><span class="pv">富山は日帰り（実回答52%）。北陸新幹線で30分のお手軽周遊先</span></li>
+            <li><span class="pk">予算</span><span class="pv">富山1日あたり1人 NT$ 4,000（約19,000円）</span></li>
+          </ul>
+
+          <div class="persona-quote">
+            「金沢で兼六園と21世紀美術館を見たら、新幹線で30分の富山に
+            ガラス美術館を見に行きたいの。隈研吾の建築でしょう？
+            娘の自由研究にもなるし、私自身が一番楽しみにしてるかも。」
+          </div>
+        </div>
+
+        <div class="persona-col">
+          <h4>VALUES ／ 価値観</h4>
+          <ul class="value-list">
+            <li>家族旅行は "教育" と "癒し" を兼ねるもの。両親を喜ばせる親孝行旅でもある</li>
+            <li>ガイドブック（地球の歩き方繁体字版・MOOK）を必ず買い込み、付箋を貼り込む派</li>
+            <li>SNSは見るがアテにしすぎない。家族や同僚の "実体験" を最も信頼</li>
+            <li>体験＞物欲。買い物より、写真に残せる景観・建築・食を選ぶ</li>
+            <li>日本リピーター（台湾平均で年1〜2回訪日）。北陸は「次の開拓地」</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 旅マエ・ナカ・アト -->
+      <div class="timeline" style="margin:0 40px 24px;">
+        <div class="timeline-title">— Travel Journey ／ 旅マエ・旅ナカ・旅アト</div>
+        <div class="tl-grid">
+          <div class="tl-step">
+            <div class="tl-step-icon">BEFORE</div>
+            <div class="tl-label">旅マエ（出発の3か月前〜）</div>
+            <div class="tl-text">
+              書店でMOOKの『金沢・北陸』特集を購入。会社の同僚（北陸経験者）から「ガラス美術館は娘さんが喜ぶよ」と勧められる。Klook・KKDayで新幹線パスを予約。Instagramで #富山ガラス美術館 のタグ画像を保存。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">DURING</div>
+            <div class="tl-label">旅ナカ（富山滞在の1日）</div>
+            <div class="tl-text">
+              朝9時に金沢発の新幹線で富山駅着 → 環水公園のスタバで朝食写真 → ガラス美術館で2時間（娘の自由研究素材） → 駅近で寿司ランチ → 17時の新幹線で金沢に戻る。次回は五箇山と庄川峡に行きたいと話す。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">AFTER</div>
+            <div class="tl-label">旅アト（帰国後）</div>
+            <div class="tl-text">
+              Facebookに家族写真を10枚投稿。「富山、半日では足りなかった！次は2泊して合掌造りに行く」とコメント。同僚3名から「どう行ったの？」と聞かれ、自分の経験を熱心に共有する "ミニ・インフルエンサー" 化。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- インサイト＋アクション -->
+      <div class="insight-grid">
+        <div class="insight-block">
+          <div class="insight-h">▸ Key Insight</div>
+          <div class="insight-t">「日帰りで満足」ではなく「日帰りしかできなかった」</div>
+          <div class="insight-d">
+            潜在ニーズ調査で庄川峡（want17 vs plan3, Gap=14）、五箇山（Gap=9）が突出。"金沢ついで半日" の制約を外せれば、自然と1泊以上に伸びる層。次回再訪の素地は十分にある。
+          </div>
+        </div>
+        <div class="insight-block action">
+          <div class="insight-h">▸ Action Idea</div>
+          <div class="insight-t">繁体字ガイドブック編集部 × 「金沢＋富山1泊2日」モデルコース提案</div>
+          <div class="insight-d">
+            MOOK・地球の歩き方 繁体字版に「金沢ついで」ではなく「金沢＋富山1泊2日プラン」として庄川峡＋宇奈月温泉の組み合わせを掲載提案。紙メディア優位の同層には最も刺さる流通経路。
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-data">
+        <span><b>n=42</b>（台湾全体の14.8%）</span>
+        <span><b>関西国際空港 26.2%</b></span>
+        <span><b>金沢から 40.5%</b></span>
+        <span><b>新幹線 62%</b></span>
+        <span><b>日帰り 52%</b></span>
+        <span><b>初訪日 76%</b></span>
+        <span><b>ガイドブック 19% (+10pt)</b></span>
+        <span><b>女性比 66.7%</b></span>
+      </div>
+    </article>
+
+
+    <!-- ===== TW-02: 19歳以下×家族（三世代旅行） ===== -->
+    <article class="persona-card">
+      <div class="persona-header">
+        <div class="persona-portrait">陳</div>
+        <div class="persona-headline">
+          <div class="persona-no">PERSONA TW-02 ／ 19歳以下 × 家族 ／ n=28 ／ 構成比 9.9%</div>
+          <h4 class="persona-name">陳 家瑋（チェン・ジャーウェイ）<span class="name-en">Chen Chia-wei, 14</span></h4>
+          <p class="persona-catch">"パパとママと祖母とおじいちゃん、全員で北陸へ。"</p>
+        </div>
+        <span class="persona-tag">三世代の中学生</span>
+      </div>
+
+      <div class="persona-body">
+        <div class="persona-col">
+          <h4>PROFILE</h4>
+          <ul class="profile-list">
+            <li><span class="pk">年齢／性別</span><span class="pv">14歳・男性（中学2年生）</span></li>
+            <li><span class="pk">居住地</span><span class="pv">高雄市・台中市（南部・中部都市）</span></li>
+            <li><span class="pk">家族構成</span><span class="pv">両親（40代）＋祖父母（70代）の三世代6名</span></li>
+            <li><span class="pk">学校</span><span class="pv">私立中学。冬休みは2週間ある</span></li>
+            <li><span class="pk">同行のリーダー</span><span class="pv">母親。家族の旅程プランナー</span></li>
+            <li><span class="pk">動線</span><span class="pv">関西国際空港46% → 金沢2泊（兼六園・市場） → 富山日帰り → 名古屋・大阪</span></li>
+            <li><span class="pk">滞在</span><span class="pv">日帰り50% or 1泊29%</span></li>
+            <li><span class="pk">小遣い</span><span class="pv">1日NT$ 1,500（約7,000円）。お菓子と家族へのお土産用</span></li>
+          </ul>
+
+          <div class="persona-quote">
+            「学校では家族の写真を見せたら『日本の田舎ヤバい！合掌造り見てきたの？』って
+            言われた。次は五箇山に行きたいって両親に頼んでる。
+            雪降ってる白川郷みたいな村、見たい。」
+          </div>
+        </div>
+
+        <div class="persona-col">
+          <h4>VALUES ／ 価値観</h4>
+          <ul class="value-list">
+            <li>家族・友人の紹介（チャンネル64%、全体比+9pt）が情報源の中心。親戚の「あそこ良かった」が決定打</li>
+            <li>YouTube・Instagramの旅行系チャンネルを毎日見る。ただし予約は親任せ</li>
+            <li>父方の祖父母（戦前世代）の日本観光経験・親日感情の継承</li>
+            <li>体験＞ショッピング。寿司体験・ガラス工房・温泉に憧れる</li>
+            <li>修学旅行で日本に行きたいが、まずは家族旅行で「予習」</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline" style="margin:0 40px 24px;">
+        <div class="timeline-title">— Travel Journey</div>
+        <div class="tl-grid">
+          <div class="tl-step">
+            <div class="tl-step-icon">BEFORE</div>
+            <div class="tl-label">旅マエ</div>
+            <div class="tl-text">
+              母親が叔母（過去に北陸訪問経験あり）から五箇山と金沢の話を聞き、家族会議で「冬の北陸6人旅」が決定。本人はYouTubeで「日本 中学生 雪国」「合掌造り」を検索しイメトレ。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">DURING</div>
+            <div class="tl-label">旅ナカ</div>
+            <div class="tl-text">
+              金沢2泊後、新幹線で富山駅 → ガラス美術館（祖父母も楽しめる） → 環水公園で家族写真 → 寿司ランチ → 高岡の大仏 → 夕方金沢戻り。本人は「自然がすごい」と興奮。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">AFTER</div>
+            <div class="tl-label">旅アト</div>
+            <div class="tl-text">
+              Instagramのストーリーズに家族写真を投稿。学校で友人から「日本どこ行ったの？」と聞かれ、富山ガラス美術館の写真を見せる。10年後、大学生になった本人が一人旅で再訪する種となる。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-block">
+          <div class="insight-h">▸ Key Insight</div>
+          <div class="insight-t">"未来のリピーター10年種まき層"</div>
+          <div class="insight-d">
+            潜在ニーズで五箇山（want15 vs plan10, Gap=5）、庄川峡（Gap=12）が突出。今回の三世代旅で芽生えた興味が、10年後の一人旅・カップル旅・修学旅行・大学留学先選びにつながる長期投資セグメント。
+          </div>
+        </div>
+        <div class="insight-block action">
+          <div class="insight-h">▸ Action Idea</div>
+          <div class="insight-t">三世代向け「冬の合掌造り＆寿司体験」家族プラン × 学校教育素材</div>
+          <div class="insight-d">
+            台湾の私立中高校への自由研究素材提供、繁体字版の「日本の伝統建築」教材コラボなど。学校から保護者へ波及する設計。ガラス美術館を「STEM教材」として位置づけた英語・繁体字ワークシートも有効。
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-data">
+        <span><b>n=28</b>（9.9%）</span>
+        <span><b>関西国際空港 46.4%</b></span>
+        <span><b>金沢から 42.9%</b></span>
+        <span><b>家族/友人の紹介 64%</b></span>
+        <span><b>日帰り50% / 1泊29%</b></span>
+        <span><b>期待：グルメ＞景観</b></span>
+        <span><b>潜在Gap：庄川峡+12</b></span>
+      </div>
+    </article>
+
+
+    <!-- ===== TW-03: 40代×友人 ===== -->
+    <article class="persona-card">
+      <div class="persona-header">
+        <div class="persona-portrait">王</div>
+        <div class="persona-headline">
+          <div class="persona-no">PERSONA TW-03 ／ 40代 × 友人 ／ n=23 ／ 構成比 8.1%</div>
+          <h4 class="persona-name">王 志明（ワン・ジーミン）<span class="name-en">Wang Chih-ming, 45</span></h4>
+          <p class="persona-catch">"昔の同級生3人で、男だけ北陸グルメ旅。"</p>
+        </div>
+        <span class="persona-tag">男友達グループ</span>
+      </div>
+
+      <div class="persona-body">
+        <div class="persona-col">
+          <h4>PROFILE</h4>
+          <ul class="profile-list">
+            <li><span class="pk">年齢／性別</span><span class="pv">45歳・男性（実回答男性比 61%）</span></li>
+            <li><span class="pk">居住地</span><span class="pv">台北市・新北市</span></li>
+            <li><span class="pk">職業</span><span class="pv">電子部品商社の課長クラス</span></li>
+            <li><span class="pk">同行者</span><span class="pv">高校・大学時代の同級生3〜4名（妻は不参加）</span></li>
+            <li><span class="pk">頻度</span><span class="pv">年1回の "男旅"。前回は九州、今回北陸、次回北海道予定</span></li>
+            <li><span class="pk">動線</span><span class="pv">中部国際空港44% or 関西30% → 金沢2泊 → 富山日帰り → 名古屋経由帰国</span></li>
+            <li><span class="pk">滞在</span><span class="pv">日帰り65%。短期決戦タイプ</span></li>
+            <li><span class="pk">予算</span><span class="pv">1人NT$ 50,000/旅（約23万円）。食と酒に投資</span></li>
+          </ul>
+
+          <div class="persona-quote">
+            「初訪日100%。ガラス美術館は『え、隈研吾やん』ってなって、
+            写真撮ったらそれで終わり。次の店、寿司屋。次、地酒バー。
+            ガイドブックは買うけど、結局現地で同級生がググる。」
+          </div>
+        </div>
+
+        <div class="persona-col">
+          <h4>VALUES ／ 価値観</h4>
+          <ul class="value-list">
+            <li>家族/友人の紹介52%が最大の情報源。同窓会LINEで「次どこ行く？」が始まる</li>
+            <li>ガイドブック（紙）30%、SNS（Instagram）26%併用型</li>
+            <li>建築・現代アート好き。富山市ガラス美術館・キタノ建築への興味は高い</li>
+            <li>食と酒が旅の核。地元の寿司・白えび・地酒は外せない</li>
+            <li>SNS投稿は控えめ（家族・職場向けに当たり障りなく）</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline" style="margin:0 40px 24px;">
+        <div class="timeline-title">— Travel Journey</div>
+        <div class="tl-grid">
+          <div class="tl-step">
+            <div class="tl-step-icon">BEFORE</div>
+            <div class="tl-label">旅マエ</div>
+            <div class="tl-text">
+              同窓会LINEで「来年どこ行く？」と話題に。誰かが「金沢いいらしい」と発言、別の友人が「富山のガラス美術館も寄れる」と提案。各自が地球の歩き方を購入し、寿司屋リストをLINEで共有。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">DURING</div>
+            <div class="tl-label">旅ナカ</div>
+            <div class="tl-text">
+              金沢2泊で寿司・近江町市場・21美。富山日帰りはガラス美術館＋環水公園＋高岡（大仏）。夕方には金沢に戻り、ホテルで地酒を持ち込んで男子トーク。富山滞在の純粋時間は7時間程度。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">AFTER</div>
+            <div class="tl-label">旅アト</div>
+            <div class="tl-text">
+              Facebookに簡素な投稿（"友達と日本！" 程度）。ただし同窓会LINEでは「次は宇奈月温泉だな、男だけで温泉行こう」と次回計画開始。潜在ニーズGap=6で宇奈月温泉が突出する所以。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-block">
+          <div class="insight-h">▸ Key Insight</div>
+          <div class="insight-t">温泉・庄川峡への顕著なアップセル可能性</div>
+          <div class="insight-d">
+            潜在Gap：宇奈月温泉(+6)、庄川峡(+5)、五箇山(+4)、雨晴海岸(+3)、氷見(+3)。日帰りで満足しているように見えて、実は「次回はもっと深く」というニーズが層全体に共通している。男旅特有の "次回計画前提" 文化と相性が良い。
+          </div>
+        </div>
+        <div class="insight-block action">
+          <div class="insight-h">▸ Action Idea</div>
+          <div class="insight-t">「男旅 北陸グルメ&温泉 1泊2日」コース × 地酒蔵連携</div>
+          <div class="insight-d">
+            富山駅前ホテル × 寿司・白えび・地酒3蔵を巡る「夕方〜翌朝コース」を商品化。台湾の中堅商社・台北OB会・大学校友会向けにB2B営業。同窓会LINEで広まる "次回提案" 文化を活用する。
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-data">
+        <span><b>n=23</b>（8.1%）</span>
+        <span><b>中部国際空港 43.5%</b></span>
+        <span><b>金沢から 47.8%</b></span>
+        <span><b>新幹線 65%</b></span>
+        <span><b>日帰り 65%</b></span>
+        <span><b>初訪日 100%</b></span>
+        <span><b>期待：グルメ＞景観＞歴史</b></span>
+        <span><b>男性比 61%</b></span>
+      </div>
+    </article>
+
+
+    <!-- ===== TW-04: 50代×家族 ===== -->
+    <article class="persona-card">
+      <div class="persona-header">
+        <div class="persona-portrait">張</div>
+        <div class="persona-headline">
+          <div class="persona-no">PERSONA TW-04 ／ 50代 × 家族 ／ n=21 ／ 構成比 7.4%</div>
+          <h4 class="persona-name">張 美玲（チャン・メイリン）<span class="name-en">Chang Mei-ling, 54</span></h4>
+          <p class="persona-catch">"夫と大学生の娘、2泊で北陸をじっくり。"</p>
+        </div>
+        <span class="persona-tag">シニア家族・2泊型</span>
+      </div>
+
+      <div class="persona-body">
+        <div class="persona-col">
+          <h4>PROFILE</h4>
+          <ul class="profile-list">
+            <li><span class="pk">年齢／性別</span><span class="pv">54歳・女性（女性比 62%）</span></li>
+            <li><span class="pk">居住地</span><span class="pv">台北市内マンション</span></li>
+            <li><span class="pk">職業</span><span class="pv">公立中学校の英語教師（夫は中堅企業の部長）</span></li>
+            <li><span class="pk">家族</span><span class="pv">夫55歳・大学生の娘21歳の3人家族</span></li>
+            <li><span class="pk">動線</span><span class="pv">小松空港38%（北陸への直行便活用）→ 金沢から57% → 富山2泊 → 名古屋経由</span></li>
+            <li><span class="pk">滞在</span><span class="pv">2泊57%！台湾セグメント中で最も滞在が深い</span></li>
+            <li><span class="pk">情報源</span><span class="pv">SNS 57%＋旅行サイト43%。50代だがITリテラシー高い</span></li>
+            <li><span class="pk">予算</span><span class="pv">1人NT$ 80,000/旅（約37万円）。質重視</span></li>
+          </ul>
+
+          <div class="persona-quote">
+            「金沢からの新幹線じゃなく、小松空港に直接降りるの。
+            その方が荷物も楽だし、北陸を本気で旅できる。今回は2泊して、
+            五箇山と環水公園、ちゃんと回りたい。SNSで見たお寿司屋さんも。」
+          </div>
+        </div>
+
+        <div class="persona-col">
+          <h4>VALUES ／ 価値観</h4>
+          <ul class="value-list">
+            <li>"金沢ついで" ではなく「北陸として」富山を捉える成熟層</li>
+            <li>SNSで情報収集するが、衝動的でなくじっくり比較検討する</li>
+            <li>食事＞景観＞歴史。寿司・白えび・氷見牛は必須</li>
+            <li>娘との関係性を大切にする教育熱心な母。文化体験を共有したい</li>
+            <li>初訪日71%／2回目29%。北陸はおそらく「2回目以降の日本旅行」</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline" style="margin:0 40px 24px;">
+        <div class="timeline-title">— Travel Journey</div>
+        <div class="tl-grid">
+          <div class="tl-step">
+            <div class="tl-step-icon">BEFORE</div>
+            <div class="tl-label">旅マエ</div>
+            <div class="tl-text">
+              EVA航空・タイガーエア台湾の小松直行便をチェック。Instagramで #小松空港 #北陸 を検索し、関西・名古屋経由より楽と判断。旅行サイトで富山駅前のホテルを2泊予約、五箇山世界遺産バスツアーも手配。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">DURING</div>
+            <div class="tl-label">旅ナカ</div>
+            <div class="tl-text">
+              小松着 → 金沢1泊 → 富山2泊。1日目：環水公園・ガラス美術館・寿司ディナー。2日目：五箇山日帰りバスツアー＋雨晴海岸。3日目：氷見・高岡経由で名古屋へ。富山滞在時間 約36時間と密度高い。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">AFTER</div>
+            <div class="tl-label">旅アト</div>
+            <div class="tl-text">
+              Instagram投稿15枚（食事・建築・自然のバランス）。学校の同僚教師グループに「北陸2泊おすすめ」とプレゼン的に共有。同僚3〜4名が翌年訪問計画を立てるなど、ハブ的拡散役を担う。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-block">
+          <div class="insight-h">▸ Key Insight</div>
+          <div class="insight-t">小松空港直行便利用層は "金沢ハブから卒業した" 旅人</div>
+          <div class="insight-d">
+            セグメント全体で小松空港利用38%（全体平均比+35pt）。EVA航空・台湾虎航の小松便を能動的に選んだ層であり、北陸を「金沢の通過点」ではなく「北陸という主目的地」として認識している成熟客層。プロモ的に最も投資価値が高い。
+          </div>
+        </div>
+        <div class="insight-block action">
+          <div class="insight-h">▸ Action Idea</div>
+          <div class="insight-t">EVA航空 × とやま観光推進機構 共同プロモ「北陸2泊3日 文化×食」</div>
+          <div class="insight-d">
+            航空会社の機内誌（中文版）への寄稿、空港カウンターでの2泊3日モデルコース配布、台湾の40〜50代女性向け雑誌（VOGUE Taiwan、ELLE Taiwan）との連携。小松直行便就航記念キャンペーンの素地。
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-data">
+        <span><b>n=21</b>（7.4%）</span>
+        <span><b>小松空港 38.1%</b></span>
+        <span><b>金沢から 57.1%</b></span>
+        <span><b>新幹線 71%</b></span>
+        <span><b>2泊 57%</b></span>
+        <span><b>SNS 57%＋旅行サイト 43%</b></span>
+        <span><b>女性比 62%</b></span>
+      </div>
+    </article>
+
+
+    <!-- ===== TW-05: 20代×家族 ===== -->
+    <article class="persona-card">
+      <div class="persona-header">
+        <div class="persona-portrait">黃</div>
+        <div class="persona-headline">
+          <div class="persona-no">PERSONA TW-05 ／ 20代 × 家族 ／ n=21 ／ 構成比 7.4%</div>
+          <h4 class="persona-name">黃 怡君（フアン・イーチュン）<span class="name-en">Huang Yi-chun, 26</span></h4>
+          <p class="persona-catch">"社会人2年目、母と妹の3人で親孝行ロード。"</p>
+        </div>
+        <span class="persona-tag">若手社会人の親孝行</span>
+      </div>
+
+      <div class="persona-body">
+        <div class="persona-col">
+          <h4>PROFILE</h4>
+          <ul class="profile-list">
+            <li><span class="pk">年齢／性別</span><span class="pv">26歳・女性（女性比 52%）</span></li>
+            <li><span class="pk">居住地</span><span class="pv">台北市・新北市の実家暮らし</span></li>
+            <li><span class="pk">職業</span><span class="pv">広告代理店アシスタント（社会人2〜3年目）</span></li>
+            <li><span class="pk">同行者</span><span class="pv">母親（50代）と妹（高校生〜大学生）</span></li>
+            <li><span class="pk">動線</span><span class="pv">空港分散（小松・成田・中部・富山）／長野経由19%＝白馬スキーから流入</span></li>
+            <li><span class="pk">滞在</span><span class="pv">1泊33%・2泊24%。バランス型</span></li>
+            <li><span class="pk">情報源</span><span class="pv">家族/友人の紹介62%＋ガイドブック43%＋SNS</span></li>
+            <li><span class="pk">予算</span><span class="pv">本人は自分の分のみNT$ 35,000（約16万円）</span></li>
+          </ul>
+
+          <div class="persona-quote">
+            「初めての海外旅行を、初任給で母と妹に。
+            ガラス美術館は娘の私が選んだの。母は寿司を、妹はSNS映えする雨晴海岸を。
+            次は宇奈月温泉に母を連れて行きたい。」
+          </div>
+        </div>
+
+        <div class="persona-col">
+          <h4>VALUES ／ 価値観</h4>
+          <ul class="value-list">
+            <li>初任給〜社会人初期の "親孝行旅" 文化（台湾特有の家族観）</li>
+            <li>SNS（Instagram）はリサーチ用、決定は家族・友人の口コミ重視</li>
+            <li>ガイドブック43%は本人ではなく母親の購買行動が反映</li>
+            <li>景観/自然81%が突出（全体比+13pt）。"癒し" を求める若手職人</li>
+            <li>長野（白馬）経由19%は、スキー文脈からの流入であり要注目</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline" style="margin:0 40px 24px;">
+        <div class="timeline-title">— Travel Journey</div>
+        <div class="tl-grid">
+          <div class="tl-step">
+            <div class="tl-step-icon">BEFORE</div>
+            <div class="tl-label">旅マエ</div>
+            <div class="tl-text">
+              初任給で母への海外旅行をプレゼント。母はガイドブックで「金沢・北陸」を熟読、本人はInstagramで雨晴海岸・五箇山を保存。妹はTikTokでウィンタースポーツ動画を見て「長野白馬も寄りたい」と提案。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">DURING</div>
+            <div class="tl-label">旅ナカ</div>
+            <div class="tl-text">
+              長野（白馬）からの流入も多い特殊動線。富山駅から在来線で氷見・高岡周遊、雨晴海岸で立山連峰の絶景写真。母は寿司に感動、妹はSNS映え、本人はガラス美術館。3人それぞれが楽しめる構成。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">AFTER</div>
+            <div class="tl-label">旅アト</div>
+            <div class="tl-text">
+              Instagram投稿は控えめ（家族プライバシー配慮）。ただし会社の同期女性たちに「親孝行旅行どこ行った？」と熱心に共有。3年後、結婚前の "母娘旅" として再訪する可能性あり。長期リレーション層。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-block">
+          <div class="insight-h">▸ Key Insight</div>
+          <div class="insight-t">"長野白馬経由" という見過ごされた流入動線</div>
+          <div class="insity-d"></div>
+          <div class="insight-d">
+            このセグメントだけ長野経由19%（全体平均比+8pt）。白馬スキー後の富山立ち寄りが発生している。庄川峡(want10 vs plan1, Gap=9)・宇奈月温泉(Gap=4)が潜在ニーズで突出しており、雪国体験から温泉・自然への自然な遷移が起きている。
+          </div>
+        </div>
+        <div class="insight-block action">
+          <div class="insight-h">▸ Action Idea</div>
+          <div class="insight-t">「白馬スキー後の北陸2泊」女性向けプラン</div>
+          <div class="insight-d">
+            台湾の20代女性向けメディア（Marie Claire 台湾、PopDaily）と組み、「親孝行旅 / 母娘旅」というキーワードで企画。白馬-長野-富山-金沢-京都という日本横断ルートの後半に富山を組み込む。LinkedIn広告でも若手社会人女性にリーチ可能。
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-data">
+        <span><b>n=21</b>（7.4%）</span>
+        <span><b>長野経由 19%</b></span>
+        <span><b>家族/友人の紹介 62%</b></span>
+        <span><b>初訪日 86%</b></span>
+        <span><b>1泊33% / 2泊24%</b></span>
+        <span><b>期待：景観81%</b></span>
+        <span><b>潜在Gap：庄川峡+9</b></span>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+
+<!-- ============================================================ -->
+<!-- ============== 02. オーストラリア (AUSTRALIA) ============== -->
+<!-- ============================================================ -->
+<section class="country-section" id="au">
+  <div class="container">
+
+    <div class="country-banner">
+      <div class="country-rank-huge">02</div>
+      <div class="country-info">
+        <div class="country-en">— AUSTRALIA ／ オーストラリア</div>
+        <h2 class="country-jp">"白馬スキー帰り"と"夫婦の文化探訪"の二刀流</h2>
+        <p class="country-tagline">
+          全回答の13.1%。夫婦/パートナー52%・初訪日94%。長野（白馬）経由が22%と異常に高く、
+          スキー客の "ついで北陸" 動線が確立されつつある。一方、シニア夫婦の文化旅行も無視できない比重。
+          潜在ニーズは庄川峡（Gap=77）。日帰り型から1泊化を促せれば、客単価が一気に化ける市場。
+        </p>
+      </div>
+      <div class="country-stats">
+        <div class="country-stat">回答数<b>266</b></div>
+        <div class="country-stat">夫婦/パートナー<b>52%</b></div>
+        <div class="country-stat">初訪日<b>94%</b></div>
+      </div>
+    </div>
+
+    <div class="country-vitals">
+      <div class="vital">
+        <div class="vital-label">主力ボリューム層</div>
+        <div class="vital-main">30代 × 夫婦</div>
+        <div class="vital-sub">国内全体平均比 +18pt の夫婦旅比率</div>
+      </div>
+      <div class="vital">
+        <div class="vital-label">特異な動線</div>
+        <div class="vital-main">長野白馬 22%</div>
+        <div class="vital-sub">全体平均+11pt。スキー後のセカンド目的地</div>
+      </div>
+      <div class="vital">
+        <div class="vital-label">情報源の偏り</div>
+        <div class="vital-main">旅行サイト/ブログ 33%</div>
+        <div class="vital-sub">全体+11pt。Lonely Planet系の影響力</div>
+      </div>
+      <div class="vital">
+        <div class="vital-label">最大の潜在ニーズ</div>
+        <div class="vital-main">庄川峡遊覧船</div>
+        <div class="vital-sub">行きたい118 vs 訪問予定41。Gap=77！</div>
+      </div>
+    </div>
+
+    <div class="persona-section-eyebrow">— 5 PERSONAS</div>
+    <h3 class="persona-section-title">オーストラリアの5人</h3>
+    <p class="persona-section-lead">
+      30代夫婦の主力層を中心に、男友達3〜4名のスキーバックパッカー、シニア夫婦の文化探訪、
+      若手DINKsカップル、そして長野経由の若手家族。
+      オーストラリアの長期休暇文化と、北アルプス・スキー文化の親和性が、富山訪問を生んでいる。
+    </p>
+
+
+    <!-- ===== AU-01: 30代×夫婦/パートナー ===== -->
+    <article class="persona-card">
+      <div class="persona-header">
+        <div class="persona-portrait">M</div>
+        <div class="persona-headline">
+          <div class="persona-no">PERSONA AU-01 ／ 30代 × 夫婦/パートナー ／ n=49 ／ 構成比 18.4%</div>
+          <h4 class="persona-name">マシュー&エマ・トンプソン<span class="name-en">Matthew & Emma Thompson, 34 & 32</span></h4>
+          <p class="persona-catch">"白馬で1週間スキー、その後の "セカンド・アドベンチャー"。"</p>
+        </div>
+        <span class="persona-tag">主力ボリューム</span>
+      </div>
+
+      <div class="persona-body">
+        <div class="persona-col">
+          <h4>PROFILE</h4>
+          <ul class="profile-list">
+            <li><span class="pk">年齢／性別</span><span class="pv">マシュー34歳（建築家）・エマ32歳（看護師）</span></li>
+            <li><span class="pk">居住地</span><span class="pv">メルボルン郊外 Brunswick・賃貸アパート</span></li>
+            <li><span class="pk">世帯年収</span><span class="pv">AU$ 230,000（約2,300万円）。可処分所得が高い</span></li>
+            <li><span class="pk">家族</span><span class="pv">DINKs（子供なし）。犬1匹をペットシッターに預けて</span></li>
+            <li><span class="pk">動線</span><span class="pv">羽田43% → 白馬で1週間スキー → 北陸4日（富山日帰り含む）→ 東京3日</span></li>
+            <li><span class="pk">滞在</span><span class="pv">日帰り47%／3泊以上20%。二極化</span></li>
+            <li><span class="pk">情報源</span><span class="pv">旅行サイト/ブログ45%＋"その他"41%（Lonely Planet・Reddit・口コミ）</span></li>
+            <li><span class="pk">予算</span><span class="pv">2人で AU$ 12,000/旅（約120万円）。質志向</span></li>
+          </ul>
+
+          <div class="persona-quote">
+            「Hakuba is great, but everyone goes there. We wanted something more 
+            authentic. The Gassho-zukuri villages and that boat ride in Shogawa 
+            — that's what we'd come back for. Next time, definitely a night in Unazuki onsen.」
+          </div>
+        </div>
+
+        <div class="persona-col">
+          <h4>VALUES ／ 価値観</h4>
+          <ul class="value-list">
+            <li>"Authenticity"志向。混雑した有名地より、地元の本物の体験を求める</li>
+            <li>Lonely Planet、Reddit r/JapanTravel、Time Out などの英語旅行情報を熟読</li>
+            <li>長期休暇文化（年4週間の有給）。日本に2〜3週間滞在</li>
+            <li>建築・デザインへの感度高い（マシュー建築家）。ガラス美術館は必須訪問</li>
+            <li>初訪日96%。日本リピーター予備軍として最も有望なセグメント</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline" style="margin:0 40px 24px;">
+        <div class="timeline-title">— Travel Journey</div>
+        <div class="tl-grid">
+          <div class="tl-step">
+            <div class="tl-step-icon">BEFORE</div>
+            <div class="tl-label">旅マエ</div>
+            <div class="tl-text">
+              半年前から計画開始。Reddit r/JapanTravelで「Hakuba alternatives」「post-ski destinations」を検索。Lonely Planet Japan 最新版を購入。旅行ブログで富山が "underrated" として紹介されているのを発見。Bookings.comで富山駅前の Hotel JAL City を予約。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">DURING</div>
+            <div class="tl-label">旅ナカ</div>
+            <div class="tl-text">
+              白馬1週間 → 長野経由で富山入り → 1日目：環水公園・ガラス美術館・地酒バー。2日目：レンタカーで五箇山往復＋庄川峡遊覧船 → 飛驒高山1泊 → 京都・東京へ。富山滞在2泊が理想だが、現状は日帰り扱いも多い。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">AFTER</div>
+            <div class="tl-label">旅アト</div>
+            <div class="tl-text">
+              Instagram 投稿15-20枚。建築写真（ガラス美術館）と五箇山雪景色がメイン。帰国後、メルボルンの友人カップル3組から「日本どこ行くべき？」と聞かれ、富山を推奨。3年以内に2回目訪日し、富山再訪の確率が高い層。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-block">
+          <div class="insight-h">▸ Key Insight</div>
+          <div class="insight-t">庄川峡遊覧船 Gap=18 が示す、決定的なミスマッチ</div>
+          <div class="insight-d">
+            このセグメント単体で「行きたい庄川峡28 vs 訪問予定10、Gap=18」。"Authenticity" を求める豪州30代夫婦にとって、五箇山と並ぶ目玉になり得るが、英語での情報・予約導線が圧倒的に弱い。Lonely Planetへの掲載・英語予約サイト整備が最大の打ち手。
+          </div>
+        </div>
+        <div class="insight-block action">
+          <div class="insight-h">▸ Action Idea</div>
+          <div class="insight-t">"Beyond Hakuba" キャンペーン × 英語旅行ブロガー誘致</div>
+          <div class="insight-d">
+            白馬スキー客向けに、富山を "post-ski cultural detour" として位置づける英語コンテンツ展開。豪州の人気旅行ブロガー（Y Travel Blog、The Invisible Tourist 等）を招聘し、庄川峡＋五箇山＋宇奈月温泉の2泊プランをレポートしてもらう。Reddit AMA でのフォローも有効。
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-data">
+        <span><b>n=49</b>（18.4%）</span>
+        <span><b>羽田43% / 成田29%</b></span>
+        <span><b>長野経由 26.5%</b></span>
+        <span><b>新幹線 49%</b></span>
+        <span><b>日帰り47% / 3泊+20%</b></span>
+        <span><b>旅行サイト/ブログ 45%</b></span>
+        <span><b>"その他" 41%</b></span>
+        <span><b>初訪日 96%</b></span>
+      </div>
+    </article>
+
+
+    <!-- ===== AU-02: 20代×友人（男4人スキーバックパッカー） ===== -->
+    <article class="persona-card">
+      <div class="persona-header">
+        <div class="persona-portrait">J</div>
+        <div class="persona-headline">
+          <div class="persona-no">PERSONA AU-02 ／ 20代 × 友人 ／ n=39 ／ 構成比 14.7%</div>
+          <h4 class="persona-name">ジェイク・オコナー<span class="name-en">Jake O'Connor, 25</span></h4>
+          <p class="persona-catch">"大学時代の悪友4人、スキー×ナイトライフの2週間。"</p>
+        </div>
+        <span class="persona-tag">男性87%のスキー集団</span>
+      </div>
+
+      <div class="persona-body">
+        <div class="persona-col">
+          <h4>PROFILE</h4>
+          <ul class="profile-list">
+            <li><span class="pk">年齢／性別</span><span class="pv">25歳・男性（このセグメント男性比 87%）</span></li>
+            <li><span class="pk">居住地</span><span class="pv">シドニー Bondi、シェアハウス4人住み</span></li>
+            <li><span class="pk">職業</span><span class="pv">マーケティング・エージェンシーのジュニア</span></li>
+            <li><span class="pk">同行者</span><span class="pv">大学時代の悪友4人（全員男性、独身）</span></li>
+            <li><span class="pk">動線</span><span class="pv">関空33% or 成田33% → 大阪 or 金沢 → 富山 → 飛驒高山 → 白馬1週間スキー</span></li>
+            <li><span class="pk">特殊性</span><span class="pv">"乗換え/通過のみ" 56%！実は富山を通過点と捉えている層</span></li>
+            <li><span class="pk">滞在</span><span class="pv">日帰り54% or 2泊26%</span></li>
+            <li><span class="pk">予算</span><span class="pv">1人 AU$ 7,000/旅（70万円）。スキーリフト券に大半を投資</span></li>
+          </ul>
+
+          <div class="persona-quote">
+            「We're heading to Hakuba for proper powder skiing. Toyama? 
+            We're just stopping for a night because it's on the way. 
+            But mate, that glass museum looks sick — we'll probably 
+            stay longer than we planned.」
+          </div>
+        </div>
+
+        <div class="persona-col">
+          <h4>VALUES ／ 価値観</h4>
+          <ul class="value-list">
+            <li>スキー＋ナイトライフ＋日本食＝目的の三本柱。富山は副次的扱い</li>
+            <li>"その他"36%が最大の情報源（Redditコミュニティ、YouTubeのスキー系チャンネル）</li>
+            <li>SNS（Instagram）でリアルタイム共有。ハッシュタグ #Japow #Hakuba 等</li>
+            <li>体験＞建築。雪景色、温泉、ローカル居酒屋を求める</li>
+            <li>"通過のみ" 56%が示す「富山＝通過点」認識を覆す必要</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline" style="margin:0 40px 24px;">
+        <div class="timeline-title">— Travel Journey</div>
+        <div class="tl-grid">
+          <div class="tl-step">
+            <div class="tl-step-icon">BEFORE</div>
+            <div class="tl-label">旅マエ</div>
+            <div class="tl-text">
+              友人グループのWhatsAppで「Japow trip 2026」スレッド。Redditで白馬の宿を予約、ついでに「stop in Toyama on the way」と1泊だけ富山駅前のビジネスホテルを取る。富山については情報ほぼなし。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">DURING</div>
+            <div class="tl-label">旅ナカ</div>
+            <div class="tl-text">
+              関空着 → 大阪2泊 → 金沢1泊 → 富山1泊（"通過"扱いだが、ガラス美術館の写真撮影＋寿司＋居酒屋ハシゴ）→ 白馬1週間。富山滞在の純粋時間は18時間程度だが、SNS発信量は意外に多い。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">AFTER</div>
+            <div class="tl-label">旅アト</div>
+            <div class="tl-text">
+              Instagram Storiesに富山ガラス美術館の写真を「unexpectedly cool」とコメント付きで投稿。Reddit r/JapanTravelに簡単な感想スレッドを立てる可能性あり。5年後、結婚してDINKsカップルとして再訪する潜在層。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-block">
+          <div class="insight-h">▸ Key Insight</div>
+          <div class="insight-t">富山市ガラス美術館 Gap=13 と庄川峡 Gap=13 のダブルピーク</div>
+          <div class="insight-d">
+            "通過" 認識の中でも、行きたいスポット圧倒的1位はガラス美術館21票（訪問予定8）。意外性・建築美が "クールな寄り道スポット" として刺さっている。1泊延長促進の最大の引き金になり得る。
+          </div>
+        </div>
+        <div class="insight-block action">
+          <div class="insight-h">▸ Action Idea</div>
+          <div class="insight-t">"Stopover Stay" — 富山駅前ビジホ × ガラス美術館夜間開館</div>
+          <div class="insight-d">
+            白馬行き新幹線の途中駅というポジションを逆手に取り、富山駅前のビジネスホテル＋ガラス美術館夜間開館パスのセット商品。バックパッカー向け価格帯（AU$ 100/泊以下）。Hostelworld・Booking.comの「stopover hack」記事掲載。
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-data">
+        <span><b>n=39</b>（14.7%）</span>
+        <span><b>関空33% / 成田33%</b></span>
+        <span><b>金沢から 23%</b></span>
+        <span><b>"通過のみ" 56%</b></span>
+        <span><b>日帰り 54%</b></span>
+        <span><b>男性比 87%</b></span>
+        <span><b>"その他"認知 36%</b></span>
+      </div>
+    </article>
+
+
+    <!-- ===== AU-03: 60歳以上×夫婦 ===== -->
+    <article class="persona-card">
+      <div class="persona-header">
+        <div class="persona-portrait">R</div>
+        <div class="persona-headline">
+          <div class="persona-no">PERSONA AU-03 ／ 60歳以上 × 夫婦/パートナー ／ n=28 ／ 構成比 10.5%</div>
+          <h4 class="persona-name">ロバート&マーガレット・ホワイト<span class="name-en">Robert & Margaret White, 67 & 65</span></h4>
+          <p class="persona-catch">"退職金で叶える、念願の北陸文化探訪。"</p>
+        </div>
+        <span class="persona-tag">シニアハイバリュー</span>
+      </div>
+
+      <div class="persona-body">
+        <div class="persona-col">
+          <h4>PROFILE</h4>
+          <ul class="profile-list">
+            <li><span class="pk">年齢／性別</span><span class="pv">ロバート67歳（元会計士）・マーガレット65歳（元教師）</span></li>
+            <li><span class="pk">居住地</span><span class="pv">パース郊外、ローン完済の戸建て</span></li>
+            <li><span class="pk">退職金</span><span class="pv">退職後、毎年1〜2回の海外旅行</span></li>
+            <li><span class="pk">家族</span><span class="pv">2人の成人した子供と4人の孫。年1〜2回会う</span></li>
+            <li><span class="pk">動線</span><span class="pv">羽田 or 成田 → 東京3泊 → 金沢2泊 → 富山日帰り → 飛驒高山 → 京都</span></li>
+            <li><span class="pk">滞在</span><span class="pv">日帰り64%が圧倒的。"金沢ハブ" 完全依存型</span></li>
+            <li><span class="pk">情報源</span><span class="pv">旅行サイト/ブログ43%＋メディア14%＋ガイドブック14%</span></li>
+            <li><span class="pk">予算</span><span class="pv">2人で AU$ 18,000/旅（180万円）。ビジネスクラス利用</span></li>
+          </ul>
+
+          <div class="persona-quote">
+            「We've been wanting to see Japan our whole lives. Kanazawa was beautiful, 
+            and we took the shinkansen to Toyama just for the glass museum. 
+            Kuma Kengo's architecture is something we'd only seen in magazines. 
+            We wished we'd planned a night here.」
+          </div>
+        </div>
+
+        <div class="persona-col">
+          <h4>VALUES ／ 価値観</h4>
+          <ul class="value-list">
+            <li>"Bucket list trip"。生涯一度の日本旅行を最大限楽しみたい</li>
+            <li>歴史/文化50%が最大の期待コンテンツ（全体平均比+9pt）</li>
+            <li>旅行サイト/ブログを丹念にリサーチ。決定までに3〜6か月</li>
+            <li>初訪日100%！全員が日本初体験。再訪確率は低めだが満足度は高い</li>
+            <li>子供・友人への "土産話" を持ち帰ることが重要なゴール</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline" style="margin:0 40px 24px;">
+        <div class="timeline-title">— Travel Journey</div>
+        <div class="tl-grid">
+          <div class="tl-step">
+            <div class="tl-step-icon">BEFORE</div>
+            <div class="tl-label">旅マエ</div>
+            <div class="tl-text">
+              退職後1年かけて計画。Lonely Planet、Rick Steves、Trip Advisor を熟読。豪州の旅行代理店（Flight Centre）で2人ツアー手配。富山は「金沢から日帰り、隈研吾建築見学」と組み込まれる。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">DURING</div>
+            <div class="tl-label">旅ナカ</div>
+            <div class="tl-text">
+              金沢から新幹線で富山駅 → ガラス美術館で2時間（彫像も含めじっくり）→ 環水公園散歩 → 高岡で大仏 → 17時の新幹線で金沢戻り。富山滞在は約8時間。「もう1泊取るべきだった」と帰路の新幹線で話す。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">AFTER</div>
+            <div class="tl-label">旅アト</div>
+            <div class="tl-text">
+              帰国後、写真アルバムを作り、孫に見せる。地元のシニアコミュニティで「日本旅行のすすめ」を語る "口コミ拡散シニア" となる。豪州のリタイア層の旅行クラブ・ロータリークラブで波及効果あり。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-block">
+          <div class="insight-h">▸ Key Insight</div>
+          <div class="insight-t">"もう1泊したかった" のリアルな声 — 客単価UPの最大層</div>
+          <div class="insight-d">
+            潜在ニーズで五箇山(+4)、庄川峡(+4)、富岩運河環水公園(+3)、高岡(+3)。日帰り64%だが、もしハイエンドな宿泊オプションがあれば、AU$ 800-1000/泊の客単価を払える経済力がある層。
+          </div>
+        </div>
+        <div class="insight-block action">
+          <div class="insight-h">▸ Action Idea</div>
+          <div class="insight-t">「シニア向け文化探訪 2泊3日」プレミアム商品開発</div>
+          <div class="insight-d">
+            富山駅前ハイエンドホテル（ANAクラウンプラザ等）＋専属ガイド付き五箇山ツアー＋ガラス美術館VIP案内＋寿司ディナーの2泊3日。Australian Geographic、ABC Travelとのタイアップ記事。豪州シニア向け旅行代理店（APT、Bunnik Tours）とのB2B営業。
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-data">
+        <span><b>n=28</b>（10.5%）</span>
+        <span><b>羽田29% / 成田29%</b></span>
+        <span><b>金沢から 53.6%</b></span>
+        <span><b>新幹線 71%</b></span>
+        <span><b>日帰り 64%</b></span>
+        <span><b>初訪日 100%</b></span>
+        <span><b>歴史/文化50% (+9pt)</b></span>
+        <span><b>女性比 61%</b></span>
+      </div>
+    </article>
+
+
+    <!-- ===== AU-04: 20代×夫婦 ===== -->
+    <article class="persona-card">
+      <div class="persona-header">
+        <div class="persona-portrait">L</div>
+        <div class="persona-headline">
+          <div class="persona-no">PERSONA AU-04 ／ 20代 × 夫婦/パートナー ／ n=27 ／ 構成比 10.2%</div>
+          <h4 class="persona-name">リアム&ソフィー・カーター<span class="name-en">Liam & Sophie Carter, 28 & 27</span></h4>
+          <p class="persona-catch">"ハネムーン延長戦、Hakuba後の "ふたりの隠れ家" 探し。"</p>
+        </div>
+        <span class="persona-tag">若手DINKsハネムーン</span>
+      </div>
+
+      <div class="persona-body">
+        <div class="persona-col">
+          <h4>PROFILE</h4>
+          <ul class="profile-list">
+            <li><span class="pk">年齢／性別</span><span class="pv">リアム28歳（テック系エンジニア）・ソフィー27歳（PR）</span></li>
+            <li><span class="pk">関係</span><span class="pv">結婚2年目／パートナーシップ。子供はまだ</span></li>
+            <li><span class="pk">居住地</span><span class="pv">メルボルン Fitzroy、賃貸モダンアパート</span></li>
+            <li><span class="pk">動線</span><span class="pv">成田/羽田 → 長野白馬1週間スキー → 富山日帰り → 飛驒高山1泊 → 京都</span></li>
+            <li><span class="pk">特殊性</span><span class="pv">長野経由30%！白馬→富山が最も濃いセグメント</span></li>
+            <li><span class="pk">滞在</span><span class="pv">日帰り63% or 2泊22%</span></li>
+            <li><span class="pk">情報源</span><span class="pv">旅行サイト/ブログ44%＋SNS33%＋"その他"26%</span></li>
+            <li><span class="pk">予算</span><span class="pv">2人で AU$ 9,000/旅（90万円）</span></li>
+          </ul>
+
+          <div class="persona-quote">
+            「After a week of skiing in Hakuba, we wanted somewhere quieter, more 
+            authentic. Toyama felt like Japan's best-kept secret. The Shogawa 
+            boat ride looks incredible — but we ran out of time. Next visit, for sure.」
+          </div>
+        </div>
+
+        <div class="persona-col">
+          <h4>VALUES ／ 価値観</h4>
+          <ul class="value-list">
+            <li>"Hidden gem" を発見したい欲求。Bali・Vietnam疲れの次の目的地として日本</li>
+            <li>Instagramコンテンツ生成への意識高い。ガラス美術館・雨晴海岸は重要</li>
+            <li>ハネムーン文脈での "贅沢" ＋ "本物" の両立</li>
+            <li>Lonely Planet、Time Out、Conde Nast Traveler が主な情報源</li>
+            <li>5〜10年後の "ファミリー客" 化が最大の長期投資</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline" style="margin:0 40px 24px;">
+        <div class="timeline-title">— Travel Journey</div>
+        <div class="tl-grid">
+          <div class="tl-step">
+            <div class="tl-step-icon">BEFORE</div>
+            <div class="tl-label">旅マエ</div>
+            <div class="tl-text">
+              ハネムーン旅行で日本を選択。白馬スキーリゾートのスタッフ（豪州人多い）から「after skiing, try Toyama」とアドバイス。Conde Nast Traveler の「Japan's Hidden Coast」記事を読み、雨晴海岸・氷見を追加。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">DURING</div>
+            <div class="tl-label">旅ナカ</div>
+            <div class="tl-text">
+              白馬から松本経由で富山入り。1日目：環水公園・ガラス美術館・地酒バー。本来は2日目に庄川峡だったが、ソフィーが疲労で予定変更し飛驒高山へ。富山滞在は実質1.5日。「next time, definitely Shogawa」とSNS発信。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">AFTER</div>
+            <div class="tl-label">旅アト</div>
+            <div class="tl-text">
+              Instagram投稿20枚以上。ガラス美術館建築・雨晴海岸の絶景写真がメイン。Buzzfeed Travel、Lonely Planet が記事化するレベルのコンテンツ生成力。3〜5年後、子連れで再訪する確率が高い。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-block">
+          <div class="insight-h">▸ Key Insight</div>
+          <div class="insight-t">庄川峡 Gap=12 — "見逃した感" がリピート動機を作る</div>
+          <div class="insight-d">
+            行きたい庄川峡15 vs 訪問予定3。SNS拡散力の高いハネムーン層が「next time」と発信することは、それ自体が次世代豪州客への強烈な広告となる。"見逃し" を意図的にデザインすることで、リピートとシェアを両立できる希少な層。
+          </div>
+        </div>
+        <div class="insight-block action">
+          <div class="insight-h">▸ Action Idea</div>
+          <div class="insight-t">"Honeymoon Hidden Gems Japan" インフルエンサー戦略</div>
+          <div class="insight-d">
+            豪州の20-30代カップル系インフルエンサー（@adventurouskate, @theblondeabroad 等）と組み、ハネムーン後の "second-leg" として庄川峡＋宇奈月温泉＋雨晴海岸の2泊プランを発信。 Instagram Reels・TikTok 短尺動画で「Japan after Hakuba」シリーズ展開。
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-data">
+        <span><b>n=27</b>（10.2%）</span>
+        <span><b>長野経由 29.6%</b></span>
+        <span><b>金沢から 22%</b></span>
+        <span><b>新幹線 44%</b></span>
+        <span><b>日帰り 63%</b></span>
+        <span><b>初訪日 93%</b></span>
+        <span><b>旅行サイト 44%</b></span>
+      </div>
+    </article>
+
+
+    <!-- ===== AU-05: 20代×家族 ===== -->
+    <article class="persona-card">
+      <div class="persona-header">
+        <div class="persona-portrait">O</div>
+        <div class="persona-headline">
+          <div class="persona-no">PERSONA AU-05 ／ 20代 × 家族 ／ n=12 ／ 構成比 4.5%</div>
+          <h4 class="persona-name">オリビア・ベネット<span class="name-en">Olivia Bennett, 24</span></h4>
+          <p class="persona-catch">"ギャップイヤー、両親と弟と4人で日本縦断3週間。"</p>
+        </div>
+        <span class="persona-tag">学生家族・3週間滞在</span>
+      </div>
+
+      <div class="persona-body">
+        <div class="persona-col">
+          <h4>PROFILE</h4>
+          <ul class="profile-list">
+            <li><span class="pk">年齢／性別</span><span class="pv">24歳・女性（女性比 50%）</span></li>
+            <li><span class="pk">居住地</span><span class="pv">ブリスベン、メルボルン大学卒業直後</span></li>
+            <li><span class="pk">立場</span><span class="pv">大学院進学前のギャップイヤー</span></li>
+            <li><span class="pk">同行者</span><span class="pv">両親（50代）と弟（高校生）</span></li>
+            <li><span class="pk">動線</span><span class="pv">成田50% → 東京3泊 → 白馬1週間 → 富山日帰り → 飛驒高山 → 京都・大阪</span></li>
+            <li><span class="pk">特殊性</span><span class="pv">長野経由42%（豪州内で最高）</span></li>
+            <li><span class="pk">滞在</span><span class="pv">日帰り50% / 残りは1〜2泊バラけ</span></li>
+            <li><span class="pk">予算</span><span class="pv">家族4人で AU$ 25,000/旅（250万円）</span></li>
+          </ul>
+
+          <div class="persona-quote">
+            「My parents are skiing in Hakuba, but I'm into the art museum stuff. 
+            The Toyama Glass Museum was actually my pick. Instagram-wise, 
+            that infinity room is gold. Wish we'd stayed longer.」
+          </div>
+        </div>
+
+        <div class="persona-col">
+          <h4>VALUES ／ 価値観</h4>
+          <ul class="value-list">
+            <li>Z世代らしいSNS発信力。TikTok・Instagram Reels の自然な発信者</li>
+            <li>"映え"＋"本物" のバランス。表面的な観光地は敬遠</li>
+            <li>家族旅行内での "若い世代の発信者" ポジション</li>
+            <li>大学院進学後・社会人になってからの再訪確率が高い長期投資層</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline" style="margin:0 40px 24px;">
+        <div class="timeline-title">— Travel Journey</div>
+        <div class="tl-grid">
+          <div class="tl-step">
+            <div class="tl-step-icon">BEFORE</div>
+            <div class="tl-label">旅マエ</div>
+            <div class="tl-text">
+              家族の旅行プランナー役を本人が担当。TikTokで「Japan hidden gems」を保存。両親はスキー、弟はアニメ聖地、本人はアート美術館とそれぞれ要望をミックスし、富山が両方の中継点として組み込まれる。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">DURING</div>
+            <div class="tl-label">旅ナカ</div>
+            <div class="tl-text">
+              白馬から松本経由で富山入り。両親はホテルで休憩、本人と弟だけでガラス美術館＋環水公園 → 高岡（大仏）→ 弟はアニメ関連スポット探訪 → 夕方家族合流で寿司ディナー。富山滞在は実質1日。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">AFTER</div>
+            <div class="tl-label">旅アト</div>
+            <div class="tl-text">
+              Instagram Reels 5本・TikTok 3本投稿。ガラス美術館の Infinity Mirror の動画はviralに（ブリスベン地元コミュニティ内で5万再生）。10年後、ハネムーンや自身の家族旅行で再訪する種が植えられる。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-block">
+          <div class="insight-h">▸ Key Insight</div>
+          <div class="insight-t">富山市ガラス美術館 Gap=6 と庄川峡 Gap=4 が示す "Z世代の隠れた興味"</div>
+          <div class="insight-d">
+            このセグメント内では富山市ガラス美術館の want が8と最多。Z世代特有の "映え" 文脈で、隈研吾建築は刺さる。一方で、潜在ニーズ Gap=6 が示すように、十分な訪問動線が用意されていない。
+          </div>
+        </div>
+        <div class="insight-block action">
+          <div class="insight-h">▸ Action Idea</div>
+          <div class="insight-t">"Toyama for Gen Z" TikTok キャンペーン</div>
+          <div class="insight-d">
+            豪州Z世代旅行クリエイター（@taylorrgalvin等）にガラス美術館＋雨晴海岸＋環水公園のZ世代向け1日コースを発信してもらう。ハッシュタグ #ToyamaGlassMuseum を活用。学生向け短期滞在パスのアイデアも有効。
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-data">
+        <span><b>n=12</b>（4.5%）</span>
+        <span><b>成田50%</b></span>
+        <span><b>長野経由 41.7%</b></span>
+        <span><b>初訪日 100%</b></span>
+        <span><b>日帰り 50%</b></span>
+        <span><b>"その他"・SNS が情報源</b></span>
+        <span><b>女性比 50%</b></span>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+
+<!-- ============================================================ -->
+<!-- ============== ここまで第1便。第2便で続きを差し込む ============== -->
+<!-- ============================================================ -->
+
+
+<!-- 仮：第2-3便用のアンカー -->
+<!-- ============================================================ -->
+<!-- ============== 03. アメリカ (USA) ============== -->
+<!-- ============================================================ -->
+<section class="country-section" id="us">
+  <div class="container">
+
+    <div class="country-banner">
+      <div class="country-rank-huge">03</div>
+      <div class="country-info">
+        <div class="country-en">— UNITED STATES ／ アメリカ</div>
+        <h2 class="country-jp">"羽田起点・東京延長戦"で訪れる、知的好奇心の旅人たち</h2>
+        <p class="country-tagline">
+          全回答の9.0%。羽田空港46%・東京から30%という強烈な "東京ハブ" 依存型市場。
+          一人旅20%＋夫婦/パートナー40%という構成は、独立志向の強い米国らしい旅行スタイル。
+          初訪日86%だが「3泊以上」が20%と長期滞在傾向。"その他"の認知経路が32%と異常に高く、
+          英語の旅行メディア・口コミネットワークが独自の情報生態系を形成している。
+        </p>
+      </div>
+      <div class="country-stats">
+        <div class="country-stat">回答数<b>182</b></div>
+        <div class="country-stat">羽田利用<b>46%</b></div>
+        <div class="country-stat">3泊以上<b>20%</b></div>
+      </div>
+    </div>
+
+    <div class="country-vitals">
+      <div class="vital">
+        <div class="vital-label">主力ボリューム層</div>
+        <div class="vital-main">30代 × 夫婦</div>
+        <div class="vital-sub">夫婦/パートナー40%が中核</div>
+      </div>
+      <div class="vital">
+        <div class="vital-label">起点となる動線</div>
+        <div class="vital-main">東京 30%</div>
+        <div class="vital-sub">全体平均比+8pt。"金沢"より"東京"</div>
+      </div>
+      <div class="vital">
+        <div class="vital-label">特異な認知経路</div>
+        <div class="vital-main">"その他" 32%</div>
+        <div class="vital-sub">全体平均+16pt。Reddit・ブログ等</div>
+      </div>
+      <div class="vital">
+        <div class="vital-label">最大の潜在ニーズ</div>
+        <div class="vital-main">庄川峡遊覧船</div>
+        <div class="vital-sub">行きたい80 vs 訪問予定17。Gap=63</div>
+      </div>
+    </div>
+
+    <div class="persona-section-eyebrow">— 5 PERSONAS</div>
+    <h3 class="persona-section-title">アメリカの5人</h3>
+    <p class="persona-section-lead">
+      30代夫婦のテック系カップル、新婚の20代カップル、男友達の3〜4日プチ旅、
+      40代ビジネスマンのwork-leisure混合、そしてリタイア夫婦のジャパン・ブケットリスト。
+      "東京から日帰り or 1泊"の薄い接点を、いかに深い体験に転換するかが鍵。
+    </p>
+
+    <!-- ===== US-01: 30代×夫婦 ===== -->
+    <article class="persona-card">
+      <div class="persona-header">
+        <div class="persona-portrait">D</div>
+        <div class="persona-headline">
+          <div class="persona-no">PERSONA US-01 ／ 30代 × 夫婦/パートナー ／ n=19 ／ 構成比 10.4%</div>
+          <h4 class="persona-name">デイビッド&ジェニファー・ミラー<span class="name-en">David & Jennifer Miller, 35 & 33</span></h4>
+          <p class="persona-catch">"テック夫婦の "Off-the-beaten-path" ジャパン。"</p>
+        </div>
+        <span class="persona-tag">主力ボリューム</span>
+      </div>
+
+      <div class="persona-body">
+        <div class="persona-col">
+          <h4>PROFILE</h4>
+          <ul class="profile-list">
+            <li><span class="pk">年齢／性別</span><span class="pv">デイビッド35歳（プロダクトマネージャー）・ジェニファー33歳（UXデザイナー）</span></li>
+            <li><span class="pk">居住地</span><span class="pv">サンフランシスコ Mission District、賃貸2BR</span></li>
+            <li><span class="pk">世帯年収</span><span class="pv">US$ 320,000（約4,800万円）。テック高収入</span></li>
+            <li><span class="pk">家族</span><span class="pv">DINKs、犬1匹</span></li>
+            <li><span class="pk">動線</span><span class="pv">成田47% → 東京4泊 → 富山日帰り or 飛驒高山1泊 → 京都・大阪</span></li>
+            <li><span class="pk">滞在</span><span class="pv">日帰り58% / 2泊以上42%。中規模都市感覚で立ち寄り</span></li>
+            <li><span class="pk">情報源</span><span class="pv">"その他"32%＋家族友人26%＋SNS26%</span></li>
+            <li><span class="pk">予算</span><span class="pv">2人で US$ 15,000/旅（約220万円）</span></li>
+          </ul>
+
+          <div class="persona-quote">
+            「Tokyo and Kyoto are amazing but they're so... expected. 
+            A friend at work who lived in Japan mentioned Toyama — the glass museum, 
+            the gassho villages. That's exactly the kind of detour we wanted. 
+            Next time, we'd definitely overnight in Unazuki.」
+          </div>
+        </div>
+
+        <div class="persona-col">
+          <h4>VALUES ／ 価値観</h4>
+          <ul class="value-list">
+            <li>"Authenticity" 至上主義。観光客が多い場所より、ローカルな本物を求める</li>
+            <li>Reddit r/JapanTravel、Time Out Tokyo、Atlas Obscura が主要情報源</li>
+            <li>建築・デザインへの感度が高い（隈研吾・安藤忠雄を認知）</li>
+            <li>仕事関係のジャパン経験者（駐在経験のある同僚）からの口コミを最重視</li>
+            <li>5年以内のリピート訪日確率が極めて高い長期投資セグメント</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline" style="margin:0 40px 24px;">
+        <div class="timeline-title">— Travel Journey</div>
+        <div class="tl-grid">
+          <div class="tl-step">
+            <div class="tl-step-icon">BEFORE</div>
+            <div class="tl-label">旅マエ（3〜6か月前）</div>
+            <div class="tl-text">
+              職場の元日本駐在員から「Tokyoの外を見るなら北陸」と聞き、Atlas Obscura・Lonely Planet で富山を調査。Reddit r/JapanTravel で "Toyama itinerary" を検索。Booking.com で東京拠点に決め、富山は日帰り組み込み。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">DURING</div>
+            <div class="tl-label">旅ナカ</div>
+            <div class="tl-text">
+              東京から新幹線で富山駅 → ガラス美術館（隈研吾建築に2時間）→ 環水公園のスタバ → 寿司ランチ → 雨晴海岸（電車で40分）→ 夕方東京戻り。13時間の濃密日帰り。「庄川峡まで行く時間がなかった」が次回確実な動機に。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">AFTER</div>
+            <div class="tl-label">旅アト</div>
+            <div class="tl-text">
+              Instagram 12枚投稿。ガラス美術館の建築写真がエンゲージメント高い。職場のSlackチャンネル #travel に詳細投稿、同僚3〜4組が翌年訪問計画を立てる。Reddit に "Toyama day trip review" を投稿、200+ upvote獲得。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-block">
+          <div class="insight-h">▸ Key Insight</div>
+          <div class="insight-t">"Reddit/Slackで広がる口コミ" が決定打になる層</div>
+          <div class="insight-d">
+            "その他"32%（全体平均比+16pt）が示すのは、テック業界特有の情報流通：Reddit、Hacker News、職場Slack、Substack旅行ニュースレター等の独自ネットワーク。Lonely Planet等の公式メディアより、ピア・トゥ・ピアの口コミが決定的に効く。
+          </div>
+        </div>
+        <div class="insight-block action">
+          <div class="insight-h">▸ Action Idea</div>
+          <div class="insight-t">Reddit r/JapanTravel × 富山在住外国人 AMA セッション</div>
+          <div class="insight-d">
+            富山在住の英語話者（JET経験者、外国人クリエイター等）を起用し、Reddit AMA（Ask Me Anything）を季節ごとに実施。 "Living in Toyama: ask me anything" 形式で、5,000+ upvote獲得を目標に。Substack旅行ニュースレター（Time Out Japan、Tokyo Cheapo等）への寄稿も同時展開。
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-data">
+        <span><b>n=19</b>（10.4%）</span>
+        <span><b>成田47% / 羽田32%</b></span>
+        <span><b>東京から 21%</b></span>
+        <span><b>新幹線 47%＋在来線併用 37%</b></span>
+        <span><b>日帰り 58%</b></span>
+        <span><b>"その他"32%＋家族友人26%</b></span>
+        <span><b>初訪日 95%</b></span>
+      </div>
+    </article>
+
+
+    <!-- ===== US-02: 20代×夫婦 ===== -->
+    <article class="persona-card">
+      <div class="persona-header">
+        <div class="persona-portrait">R</div>
+        <div class="persona-headline">
+          <div class="persona-no">PERSONA US-02 ／ 20代 × 夫婦/パートナー ／ n=17 ／ 構成比 9.3%</div>
+          <h4 class="persona-name">ライアン&アシュリー・ジョンソン<span class="name-en">Ryan & Ashley Johnson, 28 & 27</span></h4>
+          <p class="persona-catch">"新婚旅行、京都ベースで富山「ちょっと足を伸ばす」。"</p>
+        </div>
+        <span class="persona-tag">新婚カップル・関西経由</span>
+      </div>
+
+      <div class="persona-body">
+        <div class="persona-col">
+          <h4>PROFILE</h4>
+          <ul class="profile-list">
+            <li><span class="pk">年齢／性別</span><span class="pv">ライアン28歳（コンサルタント）・アシュリー27歳（マーケター）</span></li>
+            <li><span class="pk">居住地</span><span class="pv">ニューヨーク Brooklyn、賃貸アパート</span></li>
+            <li><span class="pk">関係</span><span class="pv">結婚1年目、ハネムーン延長戦</span></li>
+            <li><span class="pk">動線</span><span class="pv">羽田47% → 東京 → 京都 → 金沢 → 富山日帰り → 飛驒高山 → 東京</span></li>
+            <li><span class="pk">特殊性</span><span class="pv">金沢から59%！関西経由ながら金沢ハブを活用</span></li>
+            <li><span class="pk">滞在</span><span class="pv">日帰り65%・初訪日100%</span></li>
+            <li><span class="pk">情報源</span><span class="pv">旅行サイト/ブログ35%＋"その他"35%＋SNS29%</span></li>
+            <li><span class="pk">予算</span><span class="pv">2人で US$ 12,000/旅（約180万円）</span></li>
+          </ul>
+
+          <div class="persona-quote">
+            「We did the 'Golden Route' — Tokyo, Kyoto, Osaka — but wanted one 
+            "wild card" day. Kanazawa was beautiful, but Toyama? Such a hidden 
+            architectural gem. That glass museum, the canal park... 
+            we already know we'll be back.」
+          </div>
+        </div>
+
+        <div class="persona-col">
+          <h4>VALUES ／ 価値観</h4>
+          <ul class="value-list">
+            <li>"Golden Route" を一度経験した上での "次の発見" への渇望</li>
+            <li>Instagram発信が旅の重要パート（ハネムーン文脈）</li>
+            <li>建築・カフェ・寿司を均等に重視するバランス志向</li>
+            <li>3〜5年後にファミリー再訪する確率が高い長期投資層</li>
+            <li>米東海岸の知的中産階級らしい "文化資本" 重視傾向</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline" style="margin:0 40px 24px;">
+        <div class="timeline-title">— Travel Journey</div>
+        <div class="tl-grid">
+          <div class="tl-step">
+            <div class="tl-step-icon">BEFORE</div>
+            <div class="tl-label">旅マエ</div>
+            <div class="tl-text">
+              ハネムーン2週間プランを Conde Nast Traveler とAFAR Magazine で参考に作成。京都ベースで「金沢から日帰りで富山」を組み込む。ガラス美術館は事前にチケット予約。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">DURING</div>
+            <div class="tl-label">旅ナカ</div>
+            <div class="tl-text">
+              京都2泊 → 金沢2泊 → 富山日帰り → 飛驒高山1泊 → 東京2泊。富山は新幹線で30分の "近場の隠れ家" として体験。ガラス美術館＋環水公園＋庄川峡（5名のみ）＋寿司。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">AFTER</div>
+            <div class="tl-label">旅アト</div>
+            <div class="tl-text">
+              Instagram投稿20枚以上、Reels 3本。ガラス美術館の Infinity Mirror Roomは特にviral。同世代の友人カップルへのリコメンドリストに必ず富山が入る。10年後の家族旅行で再訪確実。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-block">
+          <div class="insight-h">▸ Key Insight</div>
+          <div class="insight-t">五箇山 Gap=8、庄川峡 Gap=6 ̶ "見たかったが叶わなかった" の連鎖</div>
+          <div class="insight-d">
+            行きたい五箇山11 vs 訪問予定3、庄川峡11 vs 5。ハネムーン旅行の感動補正で、見れなかった場所への憧憬が強烈に残る。SNS発信力の高さと相まって "I need to come back to see this" メッセージが拡散する。
+          </div>
+        </div>
+        <div class="insight-block action">
+          <div class="insight-h">▸ Action Idea</div>
+          <div class="insight-t">「Toyama 24-hour Date Course」 高品質映像コンテンツ</div>
+          <div class="insight-d">
+            高品質な24時間モデルコース映像（YouTube/Instagram用）を制作。Kanazawa-based の英語インフルエンサーカップル（@brokeinjapan等）と共同制作。 "Kanazawa Day Trip: 24 Hours in Toyama" シリーズで、ガラス美術館・庄川峡・寿司・ホテル滞在を網羅。
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-data">
+        <span><b>n=17</b>（9.3%）</span>
+        <span><b>羽田47%</b></span>
+        <span><b>金沢から 59%</b></span>
+        <span><b>新幹線47%＋在来線併用 35%</b></span>
+        <span><b>日帰り 65%</b></span>
+        <span><b>初訪日 100%</b></span>
+      </div>
+    </article>
+
+
+    <!-- ===== US-03: 20代×友人 ===== -->
+    <article class="persona-card">
+      <div class="persona-header">
+        <div class="persona-portrait">T</div>
+        <div class="persona-headline">
+          <div class="persona-no">PERSONA US-03 ／ 20代 × 友人 ／ n=15 ／ 構成比 8.2%</div>
+          <h4 class="persona-name">タイラー・アンダーソン<span class="name-en">Tyler Anderson, 26</span></h4>
+          <p class="persona-catch">"カレッジ友達3人と "Anime & Sushi" 14日間。"</p>
+        </div>
+        <span class="persona-tag">男性87%・オタク文化系</span>
+      </div>
+
+      <div class="persona-body">
+        <div class="persona-col">
+          <h4>PROFILE</h4>
+          <ul class="profile-list">
+            <li><span class="pk">年齢／性別</span><span class="pv">26歳・男性（男性比 87%）</span></li>
+            <li><span class="pk">居住地</span><span class="pv">テキサス州オースティン、シェアハウス</span></li>
+            <li><span class="pk">職業</span><span class="pv">ソフトウェアエンジニア（在宅勤務）</span></li>
+            <li><span class="pk">同行者</span><span class="pv">カレッジ時代の悪友3〜4名（全員独身男性）</span></li>
+            <li><span class="pk">動線</span><span class="pv">羽田53% → 東京 → 長野白馬経由27% → 富山1泊 → 京都</span></li>
+            <li><span class="pk">特殊性</span><span class="pv">"通過のみ"67%！富山は完全に通過点扱い</span></li>
+            <li><span class="pk">滞在</span><span class="pv">日帰り67% or 1泊20%</span></li>
+            <li><span class="pk">情報源</span><span class="pv">"その他"47%（YouTube・Reddit・アニメコミュニティ）</span></li>
+            <li><span class="pk">予算</span><span class="pv">1人 US$ 5,500/旅（約80万円）</span></li>
+          </ul>
+
+          <div class="persona-quote">
+            「We're hitting up all the anime spots — Akihabara, Kyoto's Studio Ghibli stuff. 
+            Toyama? Just stopping on the way. But the glass museum looks dope, 
+            and honestly, the sushi here is insane. We might come back as 
+            a couple someday.」
+          </div>
+        </div>
+
+        <div class="persona-col">
+          <h4>VALUES ／ 価値観</h4>
+          <ul class="value-list">
+            <li>アニメ・ゲーム・寿司＝目的の核。富山は副次的扱い</li>
+            <li>Redditの r/JapanTravel、YouTubeの旅行系（Abroad in Japan等）が情報源</li>
+            <li>SNS発信よりReddit/Discordでの体験共有を重視</li>
+            <li>長野白馬経由27% — スキーではなくアニメ聖地（『君の名は』『おおかみこどもの雨と雪』）からの流入</li>
+            <li>10年後DINKsカップル化して再訪する種を持つ長期投資層</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline" style="margin:0 40px 24px;">
+        <div class="timeline-title">— Travel Journey</div>
+        <div class="tl-grid">
+          <div class="tl-step">
+            <div class="tl-step-icon">BEFORE</div>
+            <div class="tl-label">旅マエ</div>
+            <div class="tl-text">
+              友人グループのDiscordサーバーで6か月前からプラン議論。YouTubeの "Japan Travel 2026" 動画を10本以上視聴。富山は『おおかみこどもの雨と雪』の聖地巡礼地として認知。ホステル・カプセルホテルで宿泊コスト削減。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">DURING</div>
+            <div class="tl-label">旅ナカ</div>
+            <div class="tl-text">
+              東京5泊（アキバ・新宿）→ 長野経由 → 富山1泊（ガラス美術館＋寿司＋アニメ聖地）→ 京都5泊 → 大阪3泊。富山滞在は20時間程度だが、「思った以上にcoolだった」と発信。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">AFTER</div>
+            <div class="tl-label">旅アト</div>
+            <div class="tl-text">
+              Discord・Reddit で詳細な旅行記投稿。ガラス美術館の写真・寿司動画 → 5,000+ Reddit upvote、 同コミュニティ内で「Toyama is underrated」評価が定着。5〜10年後、結婚相手と再訪する確率高い。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-block">
+          <div class="insight-h">▸ Key Insight</div>
+          <div class="insight-t">富山市ガラス美術館 Gap=6、高岡 Gap=5 — 男性集団内の意外な人気</div>
+          <div class="insight-d">
+            "通過" 認識のセグメントながら、行きたいガラス美術館9（訪問予定3）、高岡7（訪問予定2）。建築・大仏（仏教文化）が、若い男性のオタク文脈と意外な親和性。SF・アニメ的世界観と相性が良い。
+          </div>
+        </div>
+        <div class="insight-block action">
+          <div class="insight-h">▸ Action Idea</div>
+          <div class="insight-t">「Anime Pilgrimage × Architecture」融合ガイド</div>
+          <div class="insight-d">
+            『おおかみこどもの雨と雪』（上市町・富山駅周辺）の聖地巡礼マップと、ガラス美術館・高岡大仏を組み合わせた英語ガイド。YouTuber Abroad in Japan、Tokidoki Traveller との連携動画。Discord旅行コミュニティへの直接プロモーション。
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-data">
+        <span><b>n=15</b>（8.2%）</span>
+        <span><b>羽田53% / 成田40%</b></span>
+        <span><b>長野経由 27%</b></span>
+        <span><b>"通過のみ" 67%</b></span>
+        <span><b>日帰り 67%</b></span>
+        <span><b>男性比 87%</b></span>
+        <span><b>"その他"認知 47%</b></span>
+      </div>
+    </article>
+
+
+    <!-- ===== US-04: 40代×夫婦 ===== -->
+    <article class="persona-card">
+      <div class="persona-header">
+        <div class="persona-portrait">M</div>
+        <div class="persona-headline">
+          <div class="persona-no">PERSONA US-04 ／ 40代 × 夫婦/パートナー ／ n=13 ／ 構成比 7.1%</div>
+          <h4 class="persona-name">マイケル&レベッカ・ハリス<span class="name-en">Michael & Rebecca Harris, 45 & 43</span></h4>
+          <p class="persona-catch">"出張延長で妻と合流、東京から飛驒高山を経て日本横断。"</p>
+        </div>
+        <span class="persona-tag">Work-Leisure混合型</span>
+      </div>
+
+      <div class="persona-body">
+        <div class="persona-col">
+          <h4>PROFILE</h4>
+          <ul class="profile-list">
+            <li><span class="pk">年齢／性別</span><span class="pv">マイケル45歳（金融機関のVP）・レベッカ43歳（弁護士）</span></li>
+            <li><span class="pk">居住地</span><span class="pv">シカゴ郊外Naperville、戸建て</span></li>
+            <li><span class="pk">家族</span><span class="pv">中高生の子供2人（今回は祖父母に預けて）</span></li>
+            <li><span class="pk">動線</span><span class="pv">成田54% / 羽田46% → 東京54% → 富山日帰り or 1泊 → 飛驒高山54% → 京都</span></li>
+            <li><span class="pk">特殊性</span><span class="pv">"東京から54%" が突出。Bleisure（Business + Leisure）型</span></li>
+            <li><span class="pk">滞在</span><span class="pv">日帰り54%・新幹線92%！</span></li>
+            <li><span class="pk">情報源</span><span class="pv">"その他"31%＋旅行サイト31%＋SNS23%</span></li>
+            <li><span class="pk">予算</span><span class="pv">2人で US$ 18,000/旅（約270万円）。Premium志向</span></li>
+          </ul>
+
+          <div class="persona-quote">
+            「I had a conference in Tokyo, so my wife flew in for a week after. 
+            We wanted to see more than just the cities — Toyama and Takayama 
+            offered exactly that mix of architecture, food, and nature. 
+            Wished we'd allocated a full two nights here.」
+          </div>
+        </div>
+
+        <div class="persona-col">
+          <h4>VALUES ／ 価値観</h4>
+          <ul class="value-list">
+            <li>"Time-poor, money-rich" — 時間が貴重なので質に投資</li>
+            <li>Premium Hotel志向（Marriott、Hyatt系）</li>
+            <li>歴史・建築・現代アートへの強い興味</li>
+            <li>子供たちの将来の家族旅行のロールモデル作りも意識</li>
+            <li>2〜3年以内のリピート訪日確率が高い</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline" style="margin:0 40px 24px;">
+        <div class="timeline-title">— Travel Journey</div>
+        <div class="tl-grid">
+          <div class="tl-step">
+            <div class="tl-step-icon">BEFORE</div>
+            <div class="tl-label">旅マエ</div>
+            <div class="tl-text">
+              出張プラン延長でレジャー化。妻が New York Times Travel・Wall Street Journal Magazine で日本特集を読み、富山・飛驒高山ルートを発見。American Express Travel経由でPremium Hotel手配。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">DURING</div>
+            <div class="tl-label">旅ナカ</div>
+            <div class="tl-text">
+              東京3泊（仕事＋観光）→ 富山1泊（ガラス美術館・寿司・地酒）→ 飛驒高山2泊 → 京都2泊。富山は新幹線で東京から直接アクセスし、滞在も1泊と短いが密度高い。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">AFTER</div>
+            <div class="tl-label">旅アト</div>
+            <div class="tl-text">
+              LinkedIn・Instagramに投稿。職場の上層部・同業者へ「Toyama is the next Japan destination」と推薦。American Express会員雑誌等への寄稿可能性もある拡散ハブ層。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-block">
+          <div class="insight-h">▸ Key Insight</div>
+          <div class="insight-t">"Bleisure"市場としての富山＝東京から54%</div>
+          <div class="insight-d">
+            このセグメント単体で東京から54%、新幹線92%。東京での会議・出張後の延長旅行として富山が選ばれており、ビジネス渡航と観光の融合市場。客単価が極めて高く、ホテル・食事の質に投資できる層。
+          </div>
+        </div>
+        <div class="insight-block action">
+          <div class="insight-h">▸ Action Idea</div>
+          <div class="insight-t">「Bleisure Toyama」 米系企業の東京オフィス連携</div>
+          <div class="insight-d">
+            ゴールドマンサックス、JPモルガン、グーグル等の米系企業の東京オフィスの社員向け「週末2日のBleisure旅行」プログラム。American Express Centurion会員向けの個別パッケージ。富山駅前ANAクラウンプラザ等とのコラボ。
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-data">
+        <span><b>n=13</b>（7.1%）</span>
+        <span><b>成田54% / 羽田46%</b></span>
+        <span><b>東京から 54%</b></span>
+        <span><b>新幹線 92%</b></span>
+        <span><b>日帰り 54%</b></span>
+        <span><b>初訪日 100%</b></span>
+        <span><b>"その他"31%</b></span>
+      </div>
+    </article>
+
+
+    <!-- ===== US-05: 60歳以上×夫婦 ===== -->
+    <article class="persona-card">
+      <div class="persona-header">
+        <div class="persona-portrait">J</div>
+        <div class="persona-headline">
+          <div class="persona-no">PERSONA US-05 ／ 60歳以上 × 夫婦/パートナー ／ n=13 ／ 構成比 7.1%</div>
+          <h4 class="persona-name">ジェームズ&スーザン・ウィリアムズ<span class="name-en">James & Susan Williams, 68 & 66</span></h4>
+          <p class="persona-catch">"リタイア後の3週間、悲願のジャパン・ブケットリスト。"</p>
+        </div>
+        <span class="persona-tag">3泊以上46%のスローツアー</span>
+      </div>
+
+      <div class="persona-body">
+        <div class="persona-col">
+          <h4>PROFILE</h4>
+          <ul class="profile-list">
+            <li><span class="pk">年齢／性別</span><span class="pv">ジェームズ68歳（元エンジニア）・スーザン66歳（元ライブラリアン）</span></li>
+            <li><span class="pk">居住地</span><span class="pv">フロリダ州サラソタ、リタイアコミュニティ</span></li>
+            <li><span class="pk">家族</span><span class="pv">成人した子供2人・孫4人。年4回程度会う</span></li>
+            <li><span class="pk">動線</span><span class="pv">羽田62% → 東京 → 大阪・京都 → 富山 → 東京戻り（多様な動線）</span></li>
+            <li><span class="pk">滞在</span><span class="pv">3泊以上46%！全セグメント中で最も長期滞在</span></li>
+            <li><span class="pk">情報源</span><span class="pv">旅行サイト/ブログ46%＋SNS23%＋旅行会社/ツアー15%</span></li>
+            <li><span class="pk">予算</span><span class="pv">2人で US$ 25,000/旅（約370万円）。Premium Class旅行</span></li>
+          </ul>
+
+          <div class="persona-quote">
+            「We've been dreaming about Japan for forty years. Now in retirement, 
+            we finally have time to do it right. Three weeks across the country, 
+            and our travel agent specifically recommended Toyama for the art and 
+            authentic countryside. We're staying four nights to really see it.」
+          </div>
+        </div>
+
+        <div class="persona-col">
+          <h4>VALUES ／ 価値観</h4>
+          <ul class="value-list">
+            <li>"Bucket list" — 生涯一度の "本気の日本旅行"</li>
+            <li>歴史/文化・景観/自然・グルメをバランスよく深掘り</li>
+            <li>Premium Class フライト、ハイエンドホテル、専属ガイドが基本</li>
+            <li>米国シニア向け旅行雑誌（AAA Traveler、AARP Magazine）の影響大</li>
+            <li>"Bucket listを完了したら次"の連鎖型旅行愛好家。完了後の口コミ波及大</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline" style="margin:0 40px 24px;">
+        <div class="timeline-title">— Travel Journey</div>
+        <div class="tl-grid">
+          <div class="tl-step">
+            <div class="tl-step-icon">BEFORE</div>
+            <div class="tl-label">旅マエ</div>
+            <div class="tl-text">
+              リタイア後1年かけて計画。AAA Travelの旅行代理店経由で3週間プラン手配。富山は "art and authentic countryside" 担当として4泊。Premium Hotel（ANAクラウンプラザ等）と専属ガイド付き五箇山ツアーを予約。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">DURING</div>
+            <div class="tl-label">旅ナカ</div>
+            <div class="tl-text">
+              東京5泊 → 京都5泊 → 大阪2泊 → 富山4泊（ガラス美術館・五箇山・庄川峡・宇奈月温泉を網羅） → 東京戻り3泊。富山滞在4泊は3泊以上46%の典型例で、客単価も最高クラス。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">AFTER</div>
+            <div class="tl-label">旅アト</div>
+            <div class="tl-text">
+              帰国後、地元のリタイア・コミュニティセンターで「Japan Trip Slideshow」を主催。同世代30〜50名にスライド付きで詳細紹介。AARP Magazine 旅行コラムへの寄稿可能性。シニア・コミュニティでの口コミ拡散効果大。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-block">
+          <div class="insight-h">▸ Key Insight</div>
+          <div class="insight-t">庄川峡 Gap=10 — 唯一 plan=0 のセグメント</div>
+          <div class="insight-d">
+            このセグメントで庄川峡の「行きたい」が10あるのに、「訪問予定」が0！シニア層に庄川峡遊覧船の認知が圧倒的に低い、または英語予約導線がない可能性が高い。最も改善余地が大きい施策ポイント。
+          </div>
+        </div>
+        <div class="insight-block action">
+          <div class="insight-h">▸ Action Idea</div>
+          <div class="insight-t">米シニア旅行代理店 × 富山4泊5日プレミアム・パッケージ</div>
+          <div class="insight-d">
+            AAA Travel、Tauck、Abercrombie & Kentなどの米シニア向けPremium旅行代理店と組み、4泊5日の「富山ディープ・アート＆ネイチャー」パッケージを商品化。庄川峡遊覧船の英語専属ガイド付き予約、ANAクラウンプラザ滞在、五箇山一泊体験を組み合わせ。AARP Magazineへの広告出稿。
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-data">
+        <span><b>n=13</b>（7.1%）</span>
+        <span><b>羽田62%</b></span>
+        <span><b>多様な動線</b></span>
+        <span><b>3泊以上 46%</b></span>
+        <span><b>初訪日 92%</b></span>
+        <span><b>旅行サイト 46%</b></span>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+
+<!-- ============================================================ -->
+<!-- ============== 04. 中国 (CHINA) ============== -->
+<!-- ============================================================ -->
+<section class="country-section" id="cn">
+  <div class="container">
+
+    <div class="country-banner">
+      <div class="country-rank-huge">04</div>
+      <div class="country-info">
+        <div class="country-en">— CHINA ／ 中国</div>
+        <h2 class="country-jp">"SNS駆動 × ファミリー50%"の高密度マーケット</h2>
+        <p class="country-tagline">
+          全回答の8.6%。家族53%・30/40代58%という極めて家族色の強いマーケット。
+          SNS（小紅書・抖音）の影響力が最大で、認知経路の50%を占める。
+          雨晴海岸・富岩運河環水公園・富山市ガラス美術館の "御三家" を周遊する典型パターンが定着。
+          宿泊率は79%と高く（日帰り21%）、客単価面でも有望。ウィンタースポーツ需要も急成長中。
+        </p>
+      </div>
+      <div class="country-stats">
+        <div class="country-stat">回答数<b>175</b></div>
+        <div class="country-stat">家族同行<b>53%</b></div>
+        <div class="country-stat">SNS認知<b>50%</b></div>
+      </div>
+    </div>
+
+    <div class="country-vitals">
+      <div class="vital">
+        <div class="vital-label">主力ボリューム層</div>
+        <div class="vital-main">40代 × 家族</div>
+        <div class="vital-sub">国内全体平均比 +23pt の家族比率</div>
+      </div>
+      <div class="vital">
+        <div class="vital-label">起点となる動線</div>
+        <div class="vital-main">中部国際空港 18%</div>
+        <div class="vital-sub">全体+9pt。名古屋ハブ＋金沢経由</div>
+      </div>
+      <div class="vital">
+        <div class="vital-label">特異な認知経路</div>
+        <div class="vital-main">SNS 50%</div>
+        <div class="vital-sub">小紅書（RED）・抖音（Douyin）優位</div>
+      </div>
+      <div class="vital">
+        <div class="vital-label">最大の潜在ニーズ</div>
+        <div class="vital-main">庄川峡遊覧船</div>
+        <div class="vital-sub">行きたい67 vs 訪問予定27。Gap=40</div>
+      </div>
+    </div>
+
+    <div class="persona-section-eyebrow">— 5 PERSONAS</div>
+    <h3 class="persona-section-title">中国の5人</h3>
+    <p class="persona-section-lead">
+      40代の家族旅行が最大ボリュームを占めるなか、30代夫婦の小紅書駆動カップル、
+      30代家族の若手親子、中学生を含む19歳以下の家族旅行、40代成熟夫婦の文化探訪型。
+      "雨晴海岸×夕日×立山連峰" という中国SNSで火がついている定番画像が、訪問動線を決定づけている。
+    </p>
+
+    <!-- ===== CN-01: 40代×家族 ===== -->
+    <article class="persona-card">
+      <div class="persona-header">
+        <div class="persona-portrait">王</div>
+        <div class="persona-headline">
+          <div class="persona-no">PERSONA CN-01 ／ 40代 × 家族 ／ n=31 ／ 構成比 17.7%</div>
+          <h4 class="persona-name">王 建華（ワン・ジエンホア）<span class="name-en">Wang Jianhua, 44</span></h4>
+          <p class="persona-catch">"小紅書で見た雨晴海岸の夕日、家族4人で見に行く。"</p>
+        </div>
+        <span class="persona-tag">主力ボリューム</span>
+      </div>
+
+      <div class="persona-body">
+        <div class="persona-col">
+          <h4>PROFILE</h4>
+          <ul class="profile-list">
+            <li><span class="pk">年齢／性別</span><span class="pv">44歳・男性（女性も多く男女半々）</span></li>
+            <li><span class="pk">居住地</span><span class="pv">上海市浦東新区、高層マンション</span></li>
+            <li><span class="pk">職業</span><span class="pv">外資系企業の中間管理職、または民間企業の部長</span></li>
+            <li><span class="pk">世帯年収</span><span class="pv">人民元 80万元（約1,700万円）</span></li>
+            <li><span class="pk">家族</span><span class="pv">妻（同世代）・中学生〜高校生の子供1人・両親（時々同行）</span></li>
+            <li><span class="pk">動線</span><span class="pv">関西/中部空港 → 金沢36% or 東京32% → 富山2泊 → 名古屋・東京</span></li>
+            <li><span class="pk">滞在</span><span class="pv">日帰り29%・2泊29%・3泊以上23% — 多様な滞在パターン</span></li>
+            <li><span class="pk">情報源</span><span class="pv">SNS 48%＋旅行サイト42%＋ガイドブック26%</span></li>
+            <li><span class="pk">予算</span><span class="pv">家族4人で人民元 50,000元/旅（約100万円）</span></li>
+          </ul>
+
+          <div class="persona-quote">
+            「在小红书上看到雨晴海岸的日落，立山连峰像水墨画一样。
+            带着孩子来日本，不能只去东京京都，要让他们看到不一样的日本。
+            下次想去庄川峡坐船，孩子肯定喜欢。」
+          </div>
+        </div>
+
+        <div class="persona-col">
+          <h4>VALUES ／ 価値観</h4>
+          <ul class="value-list">
+            <li>小紅書（RED）の "種草"（しゅさお）— インフルエンサーが推奨する場所を訪問</li>
+            <li>抖音（Douyin）の短動画で雨晴海岸・五箇山の絶景を視認</li>
+            <li>子供への "教育的価値" を重視（日本文化・建築・自然体験）</li>
+            <li>4S＝ SNS、Sushi、Scenery、Shopping。バランス志向</li>
+            <li>初訪日84%・2回目16%。リピート意向も高い</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline" style="margin:0 40px 24px;">
+        <div class="timeline-title">— Travel Journey</div>
+        <div class="tl-grid">
+          <div class="tl-step">
+            <div class="tl-step-icon">BEFORE</div>
+            <div class="tl-label">旅マエ</div>
+            <div class="tl-text">
+              小紅書で「富山 攻略」「雨晴海岸」を検索し、200件以上の投稿を保存。携程（Ctrip）・飛猪（Fliggy）で航空券・ホテル一括予約。中部空港経由を選択（名古屋・金沢経由が便利）。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">DURING</div>
+            <div class="tl-label">旅ナカ</div>
+            <div class="tl-text">
+              金沢1泊 → 富山2泊（雨晴海岸の夕日撮影・環水公園・ガラス美術館・寿司・五箇山日帰り）→ 名古屋経由帰国。SNS用に大量に写真撮影。雨晴海岸での "立山連峰＋夕日" は必須カット。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">AFTER</div>
+            <div class="tl-label">旅アト</div>
+            <div class="tl-text">
+              小紅書に詳細旅行記投稿（写真30枚＋テキスト2,000字）。微博・WeChatモーメンツでも共有。子供のクラスメイトの保護者から「どうやって行ったの？」と問い合わせ多数。次の中国マーケット拡大の波及ハブ。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-block">
+          <div class="insight-h">▸ Key Insight</div>
+          <div class="insight-t">"小紅書投稿1本＝中国マーケット拡大の連鎖"</div>
+          <div class="insight-d">
+            このセグメントの SNS認知率48% は、小紅書の "種草" 文化の典型。インフルエンサー1人の投稿が数百〜数千人の訪問を呼び込む。庄川峡（want12 vs plan7, Gap=5）・宇奈月温泉（Gap=3）が次のホットスポット候補。
+          </div>
+        </div>
+        <div class="insight-block action">
+          <div class="insight-h">▸ Action Idea</div>
+          <div class="insight-t">小紅書 KOL（Key Opinion Leader）招聘プログラム</div>
+          <div class="insight-d">
+            旅行系小紅書KOL（フォロワー10万〜100万）3〜5名を富山に招聘。庄川峡・五箇山・宇奈月温泉の4泊5日パッケージで「家族旅行モデルコース」を発信。微博・抖音とのクロスメディア展開。台湾と異なり、認知経路が圧倒的にSNS駆動なので、ガイドブック投資より遥かに効率的。
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-data">
+        <span><b>n=31</b>（17.7%）</span>
+        <span><b>関空/中部/羽田 各20%前後</b></span>
+        <span><b>金沢から36% / 東京32%</b></span>
+        <span><b>2泊以上 71%</b></span>
+        <span><b>初訪日 84%</b></span>
+        <span><b>SNS48%＋旅行サイト42%</b></span>
+        <span><b>男女半々</b></span>
+      </div>
+    </article>
+
+
+    <!-- ===== CN-02: 30代×夫婦 ===== -->
+    <article class="persona-card">
+      <div class="persona-header">
+        <div class="persona-portrait">李</div>
+        <div class="persona-headline">
+          <div class="persona-no">PERSONA CN-02 ／ 30代 × 夫婦/パートナー ／ n=25 ／ 構成比 14.3%</div>
+          <h4 class="persona-name">李 思琪（リー・スーチー）<span class="name-en">Li Siqi, 32</span></h4>
+          <p class="persona-catch">"小紅書で計画した、夫婦の日本SNS聖地巡礼。"</p>
+        </div>
+        <span class="persona-tag">SNS駆動カップル</span>
+      </div>
+
+      <div class="persona-body">
+        <div class="persona-col">
+          <h4>PROFILE</h4>
+          <ul class="profile-list">
+            <li><span class="pk">年齢／性別</span><span class="pv">32歳・女性（女性比52%）</span></li>
+            <li><span class="pk">居住地</span><span class="pv">北京市朝陽区、新婚マンション</span></li>
+            <li><span class="pk">職業</span><span class="pv">外資系企業マーケティング。夫はテック企業エンジニア</span></li>
+            <li><span class="pk">関係</span><span class="pv">結婚2〜3年目、DINKs</span></li>
+            <li><span class="pk">動線</span><span class="pv">中部国際空港32% → 金沢44% → 富山2泊 → 飛驒高山・東京</span></li>
+            <li><span class="pk">滞在</span><span class="pv">2泊40%＋3泊以上32%。長期滞在型</span></li>
+            <li><span class="pk">情報源</span><span class="pv">SNS72%＋旅行サイト44%。圧倒的SNS駆動</span></li>
+            <li><span class="pk">期待</span><span class="pv">景観/自然92%＋グルメ/食事80%（全て国内最高水準）</span></li>
+          </ul>
+
+          <div class="persona-quote">
+            「我和老公在小红书上看了一年的富山攻略。
+            雨晴海岸的日落、岩瀬的老街、五箇山的雪景，每一处都要打卡。
+            日本不只是东京和大阪，富山才是真正的'隐藏宝藏'。」
+          </div>
+        </div>
+
+        <div class="persona-col">
+          <h4>VALUES ／ 価値観</h4>
+          <ul class="value-list">
+            <li>小紅書 "種草" 文化のヘビーユーザー。投稿は500件以上保存</li>
+            <li>"隠藏宝藏" "隱秘景點" のキーワードに極めて敏感</li>
+            <li>SNS写真生成への意識が極めて高い（カメラ機材：Sony α7、iPhone 15 Pro Max）</li>
+            <li>夫婦の写真撮影を含む "デート" 文脈の旅行</li>
+            <li>子供がいない今の時期に、行ける場所すべてを訪問する意欲</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline" style="margin:0 40px 24px;">
+        <div class="timeline-title">— Travel Journey</div>
+        <div class="tl-grid">
+          <div class="tl-step">
+            <div class="tl-step-icon">BEFORE</div>
+            <div class="tl-label">旅マエ</div>
+            <div class="tl-text">
+              1年以上前から小紅書で富山関連投稿を保存。携程で「金沢・富山4泊5日 自由行」を予約。中部空港経由を選び、名古屋経由で金沢ハブ活用。撮影機材を準備し、ファッションも入念にコーディネート。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">DURING</div>
+            <div class="tl-label">旅ナカ</div>
+            <div class="tl-text">
+              金沢2泊 → 富山2泊 → 飛驒高山1泊。富山では雨晴海岸（夕日・朝日両方撮影）、環水公園（カナルカフェ）、ガラス美術館（建築写真）、五箇山日帰り。1日500枚以上の写真撮影。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">AFTER</div>
+            <div class="tl-label">旅アト</div>
+            <div class="tl-text">
+              帰国後1週間以内に小紅書 "富山深度遊5日" 投稿。写真50枚＋詳細5,000字＋動画3本。フォロワー1万人クラスで、平均5,000+いいね獲得。次の中国マーケット拡大の最重要ハブ。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-block">
+          <div class="insight-h">▸ Key Insight</div>
+          <div class="insight-t">中国SNS市場の "Toyama 攻略" コンテンツ生成エンジン</div>
+          <div class="insight-d">
+            このセグメントこそが、次世代の中国客誘致を支える "コンテンツ生成層"。SNS72%・景観92%・2泊以上72%という組み合わせは、深い体験 + 高密度な発信 = 後続客の波を作る最強の組み合わせ。投資対効果が極めて高い。
+          </div>
+        </div>
+        <div class="insight-block action">
+          <div class="insight-h">▸ Action Idea</div>
+          <div class="insight-t">「Toyama Photogenic Spot Map」中国語版 × 撮影スポット案内</div>
+          <div class="insight-d">
+            雨晴海岸の "夕日タイミングカレンダー"、環水公園の "桜・紅葉・雪景色カレンダー"、五箇山の "ライトアップ時期" 等を中国語マップ化し、小紅書・抖音で展開。撮影機材を持つDINKsカップル向けに "撮影ツアーガイド" を提供。
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-data">
+        <span><b>n=25</b>（14.3%）</span>
+        <span><b>中部国際空港 32%</b></span>
+        <span><b>金沢から 44%</b></span>
+        <span><b>2泊以上 72%</b></span>
+        <span><b>SNS 72%</b></span>
+        <span><b>景観92% / グルメ80%</b></span>
+      </div>
+    </article>
+
+
+    <!-- ===== CN-03: 30代×家族 ===== -->
+    <article class="persona-card">
+      <div class="persona-header">
+        <div class="persona-portrait">張</div>
+        <div class="persona-headline">
+          <div class="persona-no">PERSONA CN-03 ／ 30代 × 家族 ／ n=22 ／ 構成比 12.6%</div>
+          <h4 class="persona-name">張 偉（チャン・ウェイ）<span class="name-en">Zhang Wei, 36</span></h4>
+          <p class="persona-catch">"幼稚園の息子と妻と、関西→金沢→富山の北陸ツアー。"</p>
+        </div>
+        <span class="persona-tag">若手親子・関空起点</span>
+      </div>
+
+      <div class="persona-body">
+        <div class="persona-col">
+          <h4>PROFILE</h4>
+          <ul class="profile-list">
+            <li><span class="pk">年齢／性別</span><span class="pv">36歳・男性（男女半々）</span></li>
+            <li><span class="pk">居住地</span><span class="pv">広州市天河区、新興マンションエリア</span></li>
+            <li><span class="pk">職業</span><span class="pv">国内大手IT企業の課長クラス</span></li>
+            <li><span class="pk">家族</span><span class="pv">妻30代・幼稚園〜小学校低学年の息子</span></li>
+            <li><span class="pk">動線</span><span class="pv">関空41%！中部・成田より関空優位 → 金沢27% → 富山2泊</span></li>
+            <li><span class="pk">滞在</span><span class="pv">2泊46%・1泊32%</span></li>
+            <li><span class="pk">情報源</span><span class="pv">SNS68%＋旅行サイト45%</span></li>
+            <li><span class="pk">予算</span><span class="pv">家族3人で人民元 35,000元/旅（約70万円）</span></li>
+          </ul>
+
+          <div class="persona-quote">
+            「儿子最喜欢看动画里的日本，我们想让他亲眼看到。
+            雨晴海岸的火车跨海大桥、富山的玻璃美术馆、五箇山的合掌村，
+            每个地方都能让孩子学到东西。」
+          </div>
+        </div>
+
+        <div class="persona-col">
+          <h4>VALUES ／ 価値観</h4>
+          <ul class="value-list">
+            <li>SNS68%・若い世代らしいデジタル駆動行動</li>
+            <li>"子供の教育・体験" を旅行の中心に置く新中産階級的価値観</li>
+            <li>雨晴海岸（行きたい15）＝SNS人気No.1スポット</li>
+            <li>関西国際空港利用が突出（家族向けLCCの利便性）</li>
+            <li>5年以内のリピート訪問確率が高い長期育成層</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline" style="margin:0 40px 24px;">
+        <div class="timeline-title">— Travel Journey</div>
+        <div class="tl-grid">
+          <div class="tl-step">
+            <div class="tl-step-icon">BEFORE</div>
+            <div class="tl-label">旅マエ</div>
+            <div class="tl-text">
+              妻が小紅書で「富山 親子游」を検索し、子供向けスポットをリスト化。関空経由のLCC（春秋航空・ピーチ）でコスト最適化。携程で金沢・富山のホテルを2泊ずつ予約。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">DURING</div>
+            <div class="tl-label">旅ナカ</div>
+            <div class="tl-text">
+              関空 → 大阪1泊 → 京都1泊 → 金沢1泊 → 富山2泊（雨晴海岸・ガラス美術館・環水公園・寿司体験）→ 関空帰国。子供向けに体験要素を強化。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">AFTER</div>
+            <div class="tl-label">旅アト</div>
+            <div class="tl-text">
+              小紅書に "富山亲子游攻略" 投稿。子供向けに編集されたコンテンツが、同世代の若い親世代に強く響く。次のSNS拡散ハブ。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-block">
+          <div class="insight-h">▸ Key Insight</div>
+          <div class="insight-t">庄川峡 Gap=8 — 子連れに最適なはずなのに認知不足</div>
+          <div class="insight-d">
+            行きたい庄川峡9 vs 訪問予定1。船旅は子供にとって魅力的なはずだが、認知が圧倒的に弱い。雨晴海岸の "海バエ" イメージは強いのに、庄川峡の "川バエ" イメージが弱い構造的問題。
+          </div>
+        </div>
+        <div class="insight-block action">
+          <div class="insight-h">▸ Action Idea</div>
+          <div class="insight-t">「子連れOK庄川峡」小紅書 KOL ファミリー特集</div>
+          <div class="insight-d">
+            親子向け小紅書 KOL（"小红书亲子博主"）と組み、庄川峡遊覧船を「子連れ船旅体験」として特集。トロッコ列車との組合せでアドベンチャー感を演出。広州・深センの若い親世代をターゲットに。
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-data">
+        <span><b>n=22</b>（12.6%）</span>
+        <span><b>関空41%</b></span>
+        <span><b>金沢27% / 東京23%</b></span>
+        <span><b>2泊46%</b></span>
+        <span><b>SNS 68%</b></span>
+        <span><b>初訪日 96%</b></span>
+      </div>
+    </article>
+
+
+    <!-- ===== CN-04: 19歳以下×家族 ===== -->
+    <article class="persona-card">
+      <div class="persona-header">
+        <div class="persona-portrait">陳</div>
+        <div class="persona-headline">
+          <div class="persona-no">PERSONA CN-04 ／ 19歳以下 × 家族 ／ n=21 ／ 構成比 12.0%</div>
+          <h4 class="persona-name">陳 浩然（チェン・ハオラン）<span class="name-en">Chen Haoran, 15</span></h4>
+          <p class="persona-catch">"中学3年生、両親と東京経由で雪国体験へ。"</p>
+        </div>
+        <span class="persona-tag">三世代も含む家族ツアー</span>
+      </div>
+
+      <div class="persona-body">
+        <div class="persona-col">
+          <h4>PROFILE</h4>
+          <ul class="profile-list">
+            <li><span class="pk">年齢／性別</span><span class="pv">15歳・男性（男性比 57%）</span></li>
+            <li><span class="pk">居住地</span><span class="pv">深セン市南山区、新興エリア</span></li>
+            <li><span class="pk">家族</span><span class="pv">両親（40代）と祖父母（70代）の三世代5名</span></li>
+            <li><span class="pk">学校</span><span class="pv">私立中学。1月の冬休みを利用</span></li>
+            <li><span class="pk">動線</span><span class="pv">分散空港 → 東京38% → 富山1〜3泊</span></li>
+            <li><span class="pk">滞在</span><span class="pv">3泊以上33%・1泊29%（多様）</span></li>
+            <li><span class="pk">情報源</span><span class="pv">家族/友人の紹介57%＋SNS48%</span></li>
+            <li><span class="pk">予算</span><span class="pv">三世代5人で人民元 80,000元/旅（約170万円）</span></li>
+          </ul>
+
+          <div class="persona-quote">
+            「妈妈和奶奶都说要带我看雪。 富山的玻璃美术馆我看抖音上很多人去，
+            建筑很酷。爷爷想吃日本寿司，奶奶想去合掌村。
+            学校放假后我们一家五口一起来。」
+          </div>
+        </div>
+
+        <div class="persona-col">
+          <h4>VALUES ／ 価値観</h4>
+          <ul class="value-list">
+            <li>三世代旅行＝祖父母世代の "日本への憧れ" ＋若い世代の "SNS文化" の融合</li>
+            <li>家族/友人の紹介57%が情報源の中心（中国らしい家族ネットワーク）</li>
+            <li>ガラス美術館・五箇山・雨晴海岸の "御三家"</li>
+            <li>"日帰り" "通過のみ" 計32%＝三世代旅行ながら密度低い動線あり</li>
+            <li>10年後、本人が大学生・若手社会人として再訪する潜在層</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline" style="margin:0 40px 24px;">
+        <div class="timeline-title">— Travel Journey</div>
+        <div class="tl-grid">
+          <div class="tl-step">
+            <div class="tl-step-icon">BEFORE</div>
+            <div class="tl-label">旅マエ</div>
+            <div class="tl-text">
+              親戚で過去に金沢訪問経験者がいて、「次は富山も」と紹介される。母親が小紅書・微博で詳細リサーチ。祖父母世代の体力配慮で、ホテル選定は慎重。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">DURING</div>
+            <div class="tl-label">旅ナカ</div>
+            <div class="tl-text">
+              東京3泊（迪士尼・浅草・銀座）→ 富山1〜2泊（ガラス美術館・雨晴海岸・寿司・五箇山日帰り）→ 名古屋経由帰国。三世代の体力差を考慮した動線設計が必要。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">AFTER</div>
+            <div class="tl-label">旅アト</div>
+            <div class="tl-text">
+              本人は抖音・微信モーメンツに写真を投稿。同級生グループで「日本どこ行った？」と話題に。学校での "日本旅行体験談" 発表。10年後の本人の再訪を生む種。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-block">
+          <div class="insight-h">▸ Key Insight</div>
+          <div class="insight-t">富山市ガラス美術館 Gap=8、庄川峡 Gap=6 — 体力配慮型ニーズ</div>
+          <div class="insight-d">
+            "通過のみ" 24%という構造は、三世代の体力配慮で動線が限定されている結果。シニア向けバリアフリー対応、ガラス美術館の高齢者向けプログラム整備、庄川峡のシニア向けエスコート船などの工夫で深掘り可能。
+          </div>
+        </div>
+        <div class="insight-block action">
+          <div class="insight-h">▸ Action Idea</div>
+          <div class="insight-t">「三世代家族向け 体力レベル別 富山プラン」</div>
+          <div class="insight-d">
+            シニア向け（軽量プラン：環水公園・ガラス美術館・寿司）、ファミリー向け（標準プラン：＋雨晴海岸・庄川峡）、若者向け（アクティブ：＋五箇山・トロッコ）の3階層プランを中国語で展開。携程・飛猪のフィルター機能と連携。
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-data">
+        <span><b>n=21</b>（12.0%）</span>
+        <span><b>空港分散</b></span>
+        <span><b>東京38% / 金沢24%</b></span>
+        <span><b>3泊以上33%</b></span>
+        <span><b>家族/友人 57%</b></span>
+        <span><b>SNS 48%</b></span>
+      </div>
+    </article>
+
+
+    <!-- ===== CN-05: 40代×夫婦 ===== -->
+    <article class="persona-card">
+      <div class="persona-header">
+        <div class="persona-portrait">劉</div>
+        <div class="persona-headline">
+          <div class="persona-no">PERSONA CN-05 ／ 40代 × 夫婦/パートナー ／ n=14 ／ 構成比 8.0%</div>
+          <h4 class="persona-name">劉 雪梅（リウ・シュエメイ）<span class="name-en">Liu Xuemei, 46</span></h4>
+          <p class="persona-catch">"子供を北京に置いて、夫婦だけで4泊5日のセカンドハネムーン。"</p>
+        </div>
+        <span class="persona-tag">経済力ある成熟夫婦</span>
+      </div>
+
+      <div class="persona-body">
+        <div class="persona-col">
+          <h4>PROFILE</h4>
+          <ul class="profile-list">
+            <li><span class="pk">年齢／性別</span><span class="pv">46歳・女性（男女半々）</span></li>
+            <li><span class="pk">居住地</span><span class="pv">北京市海淀区、高級マンション</span></li>
+            <li><span class="pk">職業</span><span class="pv">医師・大学教員・国有企業の幹部クラス</span></li>
+            <li><span class="pk">家族</span><span class="pv">大学生になった子供を実家に預けて、夫婦のみ</span></li>
+            <li><span class="pk">動線</span><span class="pv">関空29%/羽田29% → 金沢36%/飛驒高山29% → 富山2〜3泊</span></li>
+            <li><span class="pk">滞在</span><span class="pv">2泊36%・日帰り36%・3泊以上29%</span></li>
+            <li><span class="pk">情報源</span><span class="pv">家族/友人の紹介57%！＋SNS43%</span></li>
+            <li><span class="pk">予算</span><span class="pv">2人で人民元 60,000元/旅（約130万円）</span></li>
+          </ul>
+
+          <div class="persona-quote">
+            「孩子上大学了，终于可以两个人慢慢旅行。
+            朋友推荐我们一定要去富山，说那里的玻璃美术馆和合掌村特别有意境。
+            这次我们想住两晚，慢慢品味。」
+          </div>
+        </div>
+
+        <div class="persona-col">
+          <h4>VALUES ／ 価値観</h4>
+          <ul class="value-list">
+            <li>家族/友人の紹介57%＝中国版 "口コミ高信頼" 文化</li>
+            <li>子離れ後の "セカンドハネムーン" 文脈</li>
+            <li>"意境（イージン）" ＝風情・趣の価値を理解する成熟層</li>
+            <li>建築・伝統工芸への深い興味（ガラス美術館・高岡銅器・井波彫刻）</li>
+            <li>3〜5年以内に必ずリピート訪問する高確率セグメント</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline" style="margin:0 40px 24px;">
+        <div class="timeline-title">— Travel Journey</div>
+        <div class="tl-grid">
+          <div class="tl-step">
+            <div class="tl-step-icon">BEFORE</div>
+            <div class="tl-label">旅マエ</div>
+            <div class="tl-text">
+              友人夫妻（過去に北陸訪問経験）から直接ヒアリング。携程の "高端定制" サービスで個別カスタム旅程作成。羽田/関空Premium Economy予約、ハイエンドホテル選定。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">DURING</div>
+            <div class="tl-label">旅ナカ</div>
+            <div class="tl-text">
+              金沢2泊 → 富山2泊（雨晴海岸早朝撮影・ガラス美術館・寿司ディナー・五箇山・高岡銅器工房見学）→ 飛驒高山 → 東京。"意境" 感じる体験を重視。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">AFTER</div>
+            <div class="tl-label">旅アト</div>
+            <div class="tl-text">
+              微信モーメンツに厳選写真15枚＋詩的なテキスト投稿。同年代の知識階層友人ネットワーク（医師・大学教員・幹部）に直接波及。年配の中国上流階級への口コミハブ。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-block">
+          <div class="insight-h">▸ Key Insight</div>
+          <div class="insight-t">宇奈月温泉 Gap=4 — シニア温泉文化との親和性</div>
+          <div class="insight-d">
+            行きたい宇奈月温泉4 vs 訪問予定0！シニア中国客に宇奈月温泉の認知が壊滅的に弱い。中国シニア層は温泉文化（特に北海道・箱根）には熟知しているが、宇奈月温泉は名所として認知されていない。
+          </div>
+        </div>
+        <div class="insight-block action">
+          <div class="insight-h">▸ Action Idea</div>
+          <div class="insight-t">「宇奈月温泉プレミアム3泊4日 中国版」</div>
+          <div class="insight-d">
+            宇奈月温泉の高級旅館（延楽・桃源等）と組み、トロッコ電車＋黒部峡谷＋温泉の3泊4日Premiumパッケージを中国向けに販売。携程の "高端定制"、飛猪の "豪华定制" 枠で展開。中国版MICE市場（医師会・経営者団体）へのB2B営業も有効。
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-data">
+        <span><b>n=14</b>（8.0%）</span>
+        <span><b>関空/羽田 各29%</b></span>
+        <span><b>金沢36% / 飛驒高山29%</b></span>
+        <span><b>2泊36%</b></span>
+        <span><b>家族/友人 57%</b></span>
+        <span><b>初訪日 100%</b></span>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+
+<!-- ============================================================ -->
+<!-- ============== 05. インドネシア (INDONESIA) ============== -->
+<!-- ============================================================ -->
+<section class="country-section" id="id">
+  <div class="container">
+
+    <div class="country-banner">
+      <div class="country-rank-huge">05</div>
+      <div class="country-info">
+        <div class="country-en">— INDONESIA ／ インドネシア</div>
+        <h2 class="country-jp">"SNS駆動の若いムスリム層"が雪国に憧れる</h2>
+        <p class="country-tagline">
+          全回答の6.2%。30代43%・20代35%という極めて若い構成。SNS認知58%は8か国中最高水準。
+          家族45%・友人29%・夫婦/パートナー18%という多様な同行形態。
+          特徴的なのは "庄川峡遊覧船" がスポット人気1位という稀有な構造 — Instagram拡散による
+          "ジブリ的世界観" の認識が、東南アジア最大の親日国家の若年層に響いている。
+          ウィンタースポーツ需要も全体平均比+8pt と急成長中。
+        </p>
+      </div>
+      <div class="country-stats">
+        <div class="country-stat">回答数<b>126</b></div>
+        <div class="country-stat">20-30代<b>78%</b></div>
+        <div class="country-stat">SNS認知<b>58%</b></div>
+      </div>
+    </div>
+
+    <div class="country-vitals">
+      <div class="vital">
+        <div class="vital-label">主力ボリューム層</div>
+        <div class="vital-main">30代 × 家族</div>
+        <div class="vital-sub">国内全体比 +16pt の家族比率</div>
+      </div>
+      <div class="vital">
+        <div class="vital-label">起点となる動線</div>
+        <div class="vital-main">成田空港 36%</div>
+        <div class="vital-sub">東京経由 + 関西経由が二大ルート</div>
+      </div>
+      <div class="vital">
+        <div class="vital-label">特異な認知経路</div>
+        <div class="vital-main">SNS 58%</div>
+        <div class="vital-sub">Instagram・TikTok圧倒。8か国中最高</div>
+      </div>
+      <div class="vital">
+        <div class="vital-label">最大の特徴</div>
+        <div class="vital-main">庄川峡が訪問予定1位</div>
+        <div class="vital-sub">他国と異なる人気構造</div>
+      </div>
+    </div>
+
+    <div class="persona-section-eyebrow">— 5 PERSONAS</div>
+    <h3 class="persona-section-title">インドネシアの5人</h3>
+    <p class="persona-section-lead">
+      30代家族のミドル層を中心に、20代男友達のバックパッカー、30代友人グループの "おじさん旅"、
+      20代家族の若手親子、30代DINKsカップル。
+      ハラル対応、写真映え、雪体験への憧憬がキーワード。Instagram駆動の認知から行動までを設計する必要。
+    </p>
+
+
+    <!-- ===== ID-01: 30代×家族 ===== -->
+    <article class="persona-card">
+      <div class="persona-header">
+        <div class="persona-portrait">B</div>
+        <div class="persona-headline">
+          <div class="persona-no">PERSONA ID-01 ／ 30代 × 家族 ／ n=25 ／ 構成比 19.8%</div>
+          <h4 class="persona-name">バユ&シティ・プラタマ<span class="name-en">Bayu & Siti Pratama, 35 & 33</span></h4>
+          <p class="persona-catch">"幼い子供と初めての日本、雪と合掌造りへの憧憬。"</p>
+        </div>
+        <span class="persona-tag">主力ボリューム</span>
+      </div>
+
+      <div class="persona-body">
+        <div class="persona-col">
+          <h4>PROFILE</h4>
+          <ul class="profile-list">
+            <li><span class="pk">年齢／性別</span><span class="pv">バユ35歳（IT企業マネージャー）・シティ33歳（フリーランス）</span></li>
+            <li><span class="pk">居住地</span><span class="pv">ジャカルタ郊外South Jakarta、近代マンション</span></li>
+            <li><span class="pk">宗教</span><span class="pv">ムスリム（ハラル対応への配慮あり）</span></li>
+            <li><span class="pk">家族</span><span class="pv">幼稚園〜小学校低学年の子供1〜2人</span></li>
+            <li><span class="pk">動線</span><span class="pv">成田44% → 東京 → 富山2〜3泊 → 京都・大阪</span></li>
+            <li><span class="pk">滞在</span><span class="pv">3泊以上32%・2泊32%</span></li>
+            <li><span class="pk">情報源</span><span class="pv">SNS 76%！＋旅行サイト16%</span></li>
+            <li><span class="pk">予算</span><span class="pv">家族4人で IDR 60,000,000（約60万円）</span></li>
+          </ul>
+
+          <div class="persona-quote">
+            「Anak-anak belum pernah lihat salju. Di Instagram saya lihat 
+            kampung Gokayama yang seperti di dongeng. Kapal di Shogawa 
+            juga seperti Studio Ghibli. Untuk anak-anak, ini pengalaman 
+            yang tidak bisa dilupakan.」
+          </div>
+        </div>
+
+        <div class="persona-col">
+          <h4>VALUES ／ 価値観</h4>
+          <ul class="value-list">
+            <li>Instagram駆動文化のヘビーユーザー。 #JapanWithKids #SaljuPertama 等</li>
+            <li>初雪・合掌造り・庄川峡＝ジブリ的世界観への強い憧憬</li>
+            <li>子供の "First Snow Experience" を最大ハイライトに</li>
+            <li>ハラル対応レストランへの配慮が必要（HappyCow等で事前検索）</li>
+            <li>ウィンタースポーツ需要が顕著（このセグメントで景観/自然60%）</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline" style="margin:0 40px 24px;">
+        <div class="timeline-title">— Travel Journey</div>
+        <div class="tl-grid">
+          <div class="tl-step">
+            <div class="tl-step-icon">BEFORE</div>
+            <div class="tl-label">旅マエ</div>
+            <div class="tl-text">
+              妻のシティが3か月以上前からInstagramで #JapanWinter #ShogawaBoat を保存。Traveloka・Tiket.comで航空券＋ホテル一括予約。HappyCowアプリでハラルレストランを富山駅周辺で検索。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">DURING</div>
+            <div class="tl-label">旅ナカ</div>
+            <div class="tl-text">
+              成田 → 東京2泊 → 富山3泊（庄川峡遊覧船・五箇山雪景色・ガラス美術館・寿司＋ハラル和食）→ 京都2泊 → 関空帰国。子供たちが初雪を体験して大興奮。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">AFTER</div>
+            <div class="tl-label">旅アト</div>
+            <div class="tl-text">
+              Instagram Reels 5本投稿（庄川峡・五箇山・初雪）。エンゲージメント1万+。ジャカルタの若いムスリム親世代に大波及。 #ToyamaWithKids ハッシュタグでインドネシア人を中心に拡散。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-block">
+          <div class="insight-h">▸ Key Insight</div>
+          <div class="insight-t">SNS 76% × ウィンタースポーツ需要 — 新興市場の典型</div>
+          <div class="insight-d">
+            このセグメントのSNS依存度は中国を上回る76%。Instagram駆動文化のため、 "映える" コンテンツ生成が決定的に重要。庄川峡の "船の中から見る雪景色" は、ジブリ的世界観としてインドネシア・マレーシア圏で爆発的人気を持つポテンシャル。
+          </div>
+        </div>
+        <div class="insight-block action">
+          <div class="insight-h">▸ Action Idea</div>
+          <div class="insight-t">「Toyama Snow Adventure for Muslim Families」キャンペーン</div>
+          <div class="insight-d">
+            ジャカルタの若いムスリム家族向けInstagramキャンペーン。"First Snow Experience"を軸に、庄川峡・五箇山・ハラル対応レストランをパッケージ化。インドネシアの旅行系インフルエンサー（@trinitytravelernotes等）を招聘。Garuda Indonesia・AirAsia等の航空会社とのコラボも検討。
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-data">
+        <span><b>n=25</b>（19.8%）</span>
+        <span><b>成田 44%</b></span>
+        <span><b>東京20% / 金沢16%</b></span>
+        <span><b>2泊以上 64%</b></span>
+        <span><b>SNS 76%</b></span>
+        <span><b>ウィンタースポーツ需要</b></span>
+      </div>
+    </article>
+
+
+    <!-- ===== ID-02: 20代×友人 ===== -->
+    <article class="persona-card">
+      <div class="persona-header">
+        <div class="persona-portrait">R</div>
+        <div class="persona-headline">
+          <div class="persona-no">PERSONA ID-02 ／ 20代 × 友人 ／ n=19 ／ 構成比 15.1%</div>
+          <h4 class="persona-name">リオ・スハルト<span class="name-en">Rio Suharto, 26</span></h4>
+          <p class="persona-catch">"大学卒業後の "初海外"、男友達5人でジャパンチャレンジ。"</p>
+        </div>
+        <span class="persona-tag">男性63%・バックパッカー</span>
+      </div>
+
+      <div class="persona-body">
+        <div class="persona-col">
+          <h4>PROFILE</h4>
+          <ul class="profile-list">
+            <li><span class="pk">年齢／性別</span><span class="pv">26歳・男性（男性比63%）</span></li>
+            <li><span class="pk">居住地</span><span class="pv">スラバヤ・バンドンの中堅都市</span></li>
+            <li><span class="pk">職業</span><span class="pv">テックスタートアップのエンジニア</span></li>
+            <li><span class="pk">同行者</span><span class="pv">大学・職場の友人5名（全員男性、独身）</span></li>
+            <li><span class="pk">動線</span><span class="pv">成田32% / 関空26% → 東京 → 富山1〜3泊 → 大阪・京都</span></li>
+            <li><span class="pk">滞在</span><span class="pv">3泊以上47%！長期滞在型</span></li>
+            <li><span class="pk">情報源</span><span class="pv">SNS68%（Instagram・TikTok）</span></li>
+            <li><span class="pk">予算</span><span class="pv">1人 IDR 25,000,000（約25万円）</span></li>
+          </ul>
+
+          <div class="persona-quote">
+            「Saya dan teman-teman lihat di TikTok kampung Gokayama yang 
+            seperti dongeng. Untuk anak laki-laki Indonesia yang belum 
+            pernah lihat salju, ini benar-benar petualangan. 
+            Onsen di Unazuki juga ingin coba.」
+          </div>
+        </div>
+
+        <div class="persona-col">
+          <h4>VALUES ／ 価値観</h4>
+          <ul class="value-list">
+            <li>"初雪体験 × 写真映え × 安価な日本旅行" の三拍子</li>
+            <li>TikTok・Instagramの旅行系コンテンツ消費量が大きい</li>
+            <li>ウィンタースポーツ需要47%＝若い男性らしい "冒険" 志向</li>
+            <li>Hostelworld、Booking.comでバジェット宿泊</li>
+            <li>5〜10年後に結婚してファミリー客として戻る潜在層</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline" style="margin:0 40px 24px;">
+        <div class="timeline-title">— Travel Journey</div>
+        <div class="tl-grid">
+          <div class="tl-step">
+            <div class="tl-step-icon">BEFORE</div>
+            <div class="tl-label">旅マエ</div>
+            <div class="tl-text">
+              友人グループのWhatsAppで6か月前からプラン議論。TikTok #JapanBackpacker #ToyamaSnow を保存。AirAsia・スクート等のLCC利用。Hostelworldでバジェットホステル予約。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">DURING</div>
+            <div class="tl-label">旅ナカ</div>
+            <div class="tl-text">
+              成田 → 東京3泊（秋葉原・新宿）→ 富山3泊（庄川峡・五箇山・宇奈月温泉初体験）→ 京都3泊 → 関空帰国。富山滞在3泊は、雪体験を最大化するため長め。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">AFTER</div>
+            <div class="tl-label">旅アト</div>
+            <div class="tl-text">
+              TikTok・Instagram Reels 7〜10本投稿。 "First Snow in Japan" "Onsen Experience" がviral化。地元の若い男性コミュニティで「次はみんなで日本行こう」運動を起こす。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-block">
+          <div class="insight-h">▸ Key Insight</div>
+          <div class="insight-t">宇奈月温泉 Gap=6 — 男性集団に温泉文化を売り込む余地</div>
+          <div class="insight-d">
+            行きたい宇奈月温泉6 vs 訪問予定0。インドネシア男性の温泉文化への憧憬が高いのに、予約導線が皆無。バックパッカー予算でも泊まれる宇奈月温泉のエコノミー旅館（湯快リゾート系列等）の英語予約サイトが必要。
+          </div>
+        </div>
+        <div class="insight-block action">
+          <div class="insight-h">▸ Action Idea</div>
+          <div class="insight-t">「Onsen for Backpackers」TikTok 戦略</div>
+          <div class="insight-d">
+            インドネシアの若手旅行TikToker（@indtravelblog等）と組み、 "Backpacker's Onsen Guide Toyama" を制作。バジェット予算で宇奈月温泉を体験するモデルプラン展開。Hostelworld、Hostelスター等のバジェット宿泊サイトでの富山プロモ。
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-data">
+        <span><b>n=19</b>（15.1%）</span>
+        <span><b>成田32% / 関空26%</b></span>
+        <span><b>東京26% / 金沢21%</b></span>
+        <span><b>3泊以上47%</b></span>
+        <span><b>SNS 68%</b></span>
+        <span><b>男性63%</b></span>
+      </div>
+    </article>
+
+
+    <!-- ===== ID-03: 30代×友人 ===== -->
+    <article class="persona-card">
+      <div class="persona-header">
+        <div class="persona-portrait">A</div>
+        <div class="persona-headline">
+          <div class="persona-no">PERSONA ID-03 ／ 30代 × 友人 ／ n=16 ／ 構成比 12.7%</div>
+          <h4 class="persona-name">アディ・プラセティオ<span class="name-en">Adi Prasetyo, 35</span></h4>
+          <p class="persona-catch">"会社の同期4人、子供を妻に預けて "おじさん旅"。"</p>
+        </div>
+        <span class="persona-tag">男性63%・既婚男性集団</span>
+      </div>
+
+      <div class="persona-body">
+        <div class="persona-col">
+          <h4>PROFILE</h4>
+          <ul class="profile-list">
+            <li><span class="pk">年齢／性別</span><span class="pv">35歳・男性（男性比63%）</span></li>
+            <li><span class="pk">居住地</span><span class="pv">ジャカルタ、Bekasi・Tangerang等の郊外</span></li>
+            <li><span class="pk">職業</span><span class="pv">大手企業のシニアマネージャー</span></li>
+            <li><span class="pk">同行者</span><span class="pv">会社の同期・大学時代の友人3〜4名。全員既婚</span></li>
+            <li><span class="pk">動線</span><span class="pv">成田31% / 羽田25% → 東京25%/金沢19% → 富山2〜3泊</span></li>
+            <li><span class="pk">滞在</span><span class="pv">3泊以上38%・2泊31%</span></li>
+            <li><span class="pk">情報源</span><span class="pv">SNS 75%！</span></li>
+            <li><span class="pk">予算</span><span class="pv">1人 IDR 40,000,000（約40万円）</span></li>
+          </ul>
+
+          <div class="persona-quote">
+            「Anak istri di rumah, kami bertiga teman kantor 
+            akhirnya bisa pergi sendiri ke Jepang. Mau makan sushi enak, 
+            naik kapal Shogawa, lihat Gokayama. Pengalaman bersama 
+            yang akan kami ingat 10 tahun ke depan.」
+          </div>
+        </div>
+
+        <div class="persona-col">
+          <h4>VALUES ／ 価値観</h4>
+          <ul class="value-list">
+            <li>"既婚男性のリフレッシュ旅" — 子育てストレスからの解放</li>
+            <li>歴史/文化38%が顕著（全体平均比+13pt）。"文化的経験" 重視</li>
+            <li>SNSは見るが投稿は控えめ（プライバシー意識）</li>
+            <li>同窓会・職場の繋がりを大切にする文化</li>
+            <li>3〜5年後に家族・夫婦で再訪する確率が極めて高い</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline" style="margin:0 40px 24px;">
+        <div class="timeline-title">— Travel Journey</div>
+        <div class="tl-grid">
+          <div class="tl-step">
+            <div class="tl-step-icon">BEFORE</div>
+            <div class="tl-label">旅マエ</div>
+            <div class="tl-text">
+              友人グループのWhatsAppで「俺たちの初海外」プラン策定。Instagram・YouTubeで富山・五箇山を調査。Tiket.com・Travelokaで一括予約。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">DURING</div>
+            <div class="tl-label">旅ナカ</div>
+            <div class="tl-text">
+              東京2泊（観光・買い物）→ 富山2泊（庄川峡・五箇山・寿司・地酒）→ 京都・大阪。富山滞在は密度高く、夕食は寿司＆地酒で長時間談笑。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">AFTER</div>
+            <div class="tl-label">旅アト</div>
+            <div class="tl-text">
+              Instagram投稿は控えめ（家族プライバシー配慮）だが、WhatsApp家族グループ・職場グループで詳細共有。3年以内に妻と再訪、5年以内に家族で再訪する高確率セグメント。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-block">
+          <div class="insight-h">▸ Key Insight</div>
+          <div class="insight-t">五箇山 Gap=4 — 文化的価値の認知不足</div>
+          <div class="insight-d">
+            行きたい五箇山11 vs 訪問予定7。歴史/文化への高い興味とアクセス導線のギャップ。世界遺産のステータスをもっと前面に出す必要。中国地方の世界遺産（厳島神社）と並べた "Japan Heritage Trail" 構想も有効。
+          </div>
+        </div>
+        <div class="insight-block action">
+          <div class="insight-h">▸ Action Idea</div>
+          <div class="insight-t">「Japan Heritage Trail」中堅企業男性向けプロモ</div>
+          <div class="insight-d">
+            ジャカルタの大手企業マネージャー層向けに、五箇山＋白川郷＋金沢の "World Heritage Triple Trip" を提案。社員旅行（インドネシア企業文化）との親和性も高い。LinkedIn広告での富裕層リターゲティング有効。
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-data">
+        <span><b>n=16</b>（12.7%）</span>
+        <span><b>成田31% / 羽田25%</b></span>
+        <span><b>東京25% / 金沢19%</b></span>
+        <span><b>3泊以上38%</b></span>
+        <span><b>SNS 75%</b></span>
+        <span><b>歴史/文化38%</b></span>
+      </div>
+    </article>
+
+
+    <!-- ===== ID-04: 20代×家族 ===== -->
+    <article class="persona-card">
+      <div class="persona-header">
+        <div class="persona-portrait">D</div>
+        <div class="persona-headline">
+          <div class="persona-no">PERSONA ID-04 ／ 20代 × 家族 ／ n=12 ／ 構成比 9.5%</div>
+          <h4 class="persona-name">ディマス・ウィジャヤ<span class="name-en">Dimas Wijaya, 25</span></h4>
+          <p class="persona-catch">"両親と妹と4人、東京経由で雪国冒険2泊。"</p>
+        </div>
+        <span class="persona-tag">若手社会人＆家族</span>
+      </div>
+
+      <div class="persona-body">
+        <div class="persona-col">
+          <h4>PROFILE</h4>
+          <ul class="profile-list">
+            <li><span class="pk">年齢／性別</span><span class="pv">25歳・男性（男女半々）</span></li>
+            <li><span class="pk">居住地</span><span class="pv">ジャカルタ、両親と同居</span></li>
+            <li><span class="pk">職業</span><span class="pv">銀行員・大手企業ジュニアスタッフ</span></li>
+            <li><span class="pk">同行者</span><span class="pv">両親（50代）と妹（高校生・大学生）</span></li>
+            <li><span class="pk">動線</span><span class="pv">成田33% → 東京33%/金沢33% → 富山1〜2泊 → 関西</span></li>
+            <li><span class="pk">滞在</span><span class="pv">2泊50%・日帰り42%</span></li>
+            <li><span class="pk">情報源</span><span class="pv">SNS 58%＋家族/友人25%</span></li>
+            <li><span class="pk">予算</span><span class="pv">家族4人で IDR 80,000,000（約80万円）</span></li>
+          </ul>
+
+          <div class="persona-quote">
+            「Ini liburan keluarga pertama ke Jepang. Saya yang merencanakan, 
+            jadi saya pilih Toyama karena teman di Instagram 
+            bilang Gokayama indah sekali. Adik saya ingin lihat salju, 
+            ibu saya ingin makan sushi enak.」
+          </div>
+        </div>
+
+        <div class="persona-col">
+          <h4>VALUES ／ 価値観</h4>
+          <ul class="value-list">
+            <li>"親孝行旅" 文化（インドネシア特有の家族尊重）</li>
+            <li>本人が計画責任者。Instagram・TikTokで情報収集</li>
+            <li>景観/自然92%が顕著（全体比+24pt）</li>
+            <li>家族の体力・好みのバランス調整に苦心</li>
+            <li>10年後に自身の家族で再訪する種を持つ層</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline" style="margin:0 40px 24px;">
+        <div class="timeline-title">— Travel Journey</div>
+        <div class="tl-grid">
+          <div class="tl-step">
+            <div class="tl-step-icon">BEFORE</div>
+            <div class="tl-label">旅マエ</div>
+            <div class="tl-text">
+              初任給を貯めて家族旅行をプレゼント。Instagramで富山関連投稿を保存、ジャカルタの旅行代理店経由でカスタム旅程作成。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">DURING</div>
+            <div class="tl-label">旅ナカ</div>
+            <div class="tl-text">
+              成田 → 東京3泊 → 富山2泊（庄川峡・五箇山・ガラス美術館・寿司）→ 大阪 → 関空帰国。新幹線92%で移動効率重視。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">AFTER</div>
+            <div class="tl-label">旅アト</div>
+            <div class="tl-text">
+              本人がInstagramに家族写真を投稿。同世代の若手社会人に「親孝行旅、富山おすすめ」と発信。5〜10年後の家族旅行リピートに繋がる種。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-block">
+          <div class="insight-h">▸ Key Insight</div>
+          <div class="insight-t">五箇山 Gap=3、高岡 Gap=3 — 親世代へのアピール</div>
+          <div class="insight-d">
+            若手社会人が家族プランナー役を担う構造。Instagramで魅力的に発信できる場所（庄川峡・五箇山）への興味は強いが、親世代の体力・好みとの調整課題。シニア配慮の動線設計が必要。
+          </div>
+        </div>
+        <div class="insight-block action">
+          <div class="insight-h">▸ Action Idea</div>
+          <div class="insight-t">「親孝行旅 Toyama」 若手社会人向けInstagram訴求</div>
+          <div class="insight-d">
+            "Pertama Kali ke Jepang dengan Orang Tua" (両親との初の日本旅行) というコンセプトで、ジャカルタの若手社会人向けInstagramキャンペーン。世代別の好みを考慮した3パターンモデルコース提示。Bookings.com、Tiket.comとの連携で予約導線も整備。
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-data">
+        <span><b>n=12</b>（9.5%）</span>
+        <span><b>成田33%</b></span>
+        <span><b>東京33% / 金沢33%</b></span>
+        <span><b>2泊50%</b></span>
+        <span><b>SNS 58%</b></span>
+        <span><b>景観/自然92%</b></span>
+      </div>
+    </article>
+
+
+    <!-- ===== ID-05: 30代×夫婦 ===== -->
+    <article class="persona-card">
+      <div class="persona-header">
+        <div class="persona-portrait">F</div>
+        <div class="persona-headline">
+          <div class="persona-no">PERSONA ID-05 ／ 30代 × 夫婦/パートナー ／ n=12 ／ 構成比 9.5%</div>
+          <h4 class="persona-name">ファリス&アニサ・ラフマン<span class="name-en">Faris & Annisa Rahman, 34 & 32</span></h4>
+          <p class="persona-catch">"白馬スキー後、五箇山と金沢でカルチャー旅。"</p>
+        </div>
+        <span class="persona-tag">DINKsカップル・長野経由</span>
+      </div>
+
+      <div class="persona-body">
+        <div class="persona-col">
+          <h4>PROFILE</h4>
+          <ul class="profile-list">
+            <li><span class="pk">年齢／性別</span><span class="pv">ファリス34歳（テック企業）・アニサ32歳（金融機関）</span></li>
+            <li><span class="pk">居住地</span><span class="pv">ジャカルタ南部・SCBDエリア</span></li>
+            <li><span class="pk">関係</span><span class="pv">結婚3〜5年目、DINKs</span></li>
+            <li><span class="pk">動線</span><span class="pv">成田33% → 長野白馬33%！ → 富山2泊 → 金沢・東京</span></li>
+            <li><span class="pk">特殊性</span><span class="pv">長野経由33%が突出（豪州並み）</span></li>
+            <li><span class="pk">滞在</span><span class="pv">2泊50%・1泊33%</span></li>
+            <li><span class="pk">情報源</span><span class="pv">SNS 83%！</span></li>
+            <li><span class="pk">予算</span><span class="pv">2人で IDR 70,000,000（約70万円）</span></li>
+          </ul>
+
+          <div class="persona-quote">
+            「Setelah ski di Hakuba, kami ingin merasakan Jepang yang 
+            lebih tradisional. Gokayama dengan rumah gassho-zukurinya 
+            seperti dari dongeng. Hot spring di Unazuki untuk relaksasi 
+            setelah ski. Kombinasi sempurna.」
+          </div>
+        </div>
+
+        <div class="persona-col">
+          <h4>VALUES ／ 価値観</h4>
+          <ul class="value-list">
+            <li>"白馬スキー → 富山文化探訪" の新ルートを発見</li>
+            <li>SNS 83%＝Instagram駆動の典型的若手富裕層</li>
+            <li>歴史/文化と温泉への深い興味</li>
+            <li>5〜10年後の家族旅行で再訪する確率が高い</li>
+            <li>ジャカルタ富裕層内でのインフルエンサー的存在</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline" style="margin:0 40px 24px;">
+        <div class="timeline-title">— Travel Journey</div>
+        <div class="tl-grid">
+          <div class="tl-step">
+            <div class="tl-step-icon">BEFORE</div>
+            <div class="tl-label">旅マエ</div>
+            <div class="tl-text">
+              白馬スキーリゾートで知り合った日本人スタッフから「after skiing, go to Toyama」と聞き、計画変更。Instagram・Pinterestで富山関連投稿を保存。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">DURING</div>
+            <div class="tl-label">旅ナカ</div>
+            <div class="tl-text">
+              白馬1週間スキー → 長野経由で富山入り → 2泊（五箇山・庄川峡・宇奈月温泉）→ 金沢1泊 → 東京帰路。
+            </div>
+          </div>
+          <div class="tl-step">
+            <div class="tl-step-icon">AFTER</div>
+            <div class="tl-label">旅アト</div>
+            <div class="tl-text">
+              Instagram投稿15枚＋Reels 3本。 "Beyond Hakuba" "Hidden Japan" ハッシュタグで発信。ジャカルタ若手富裕層への波及効果大。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-grid">
+        <div class="insight-block">
+          <div class="insight-h">▸ Key Insight</div>
+          <div class="insight-t">"白馬スキー→富山文化探訪" 新ルートのインドネシア展開</div>
+          <div class="insight-d">
+            長野経由33%は豪州並みの異常な高さ。白馬スキーリゾートにインドネシア人客が増えており、その後の "セカンドステージ" として富山が機能している。豪州市場と類似の戦略が有効。
+          </div>
+        </div>
+        <div class="insight-block action">
+          <div class="insight-h">▸ Action Idea</div>
+          <div class="insight-t">「Beyond Hakuba ID」インドネシアスキー客向けパッケージ</div>
+          <div class="insight-d">
+            白馬の宿泊施設・スキースクールと連携し、「After-Ski Cultural Journey to Toyama」をパッケージ化。インドネシア人スキー客向けに、富山2泊（庄川峡・五箇山・宇奈月温泉）モデルコース提供。Garuda Indonesia・AirAsiaのスキーツアー商品にバンドル。
+          </div>
+        </div>
+      </div>
+
+      <div class="persona-data">
+        <span><b>n=12</b>（9.5%）</span>
+        <span><b>成田33%</b></span>
+        <span><b>長野経由 33%</b></span>
+        <span><b>2泊50%</b></span>
+        <span><b>SNS 83%</b></span>
+        <span><b>歴史/文化33%</b></span>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+/* Country hero color variants */
+.th-hero { background: linear-gradient(135deg, #c8a951 0%, #1a3a52 100%); }
+.uk-hero { background: linear-gradient(135deg, #2c5f7f 0%, #1a3a52 100%); }
+.de-hero { background: linear-gradient(135deg, #3a6b7d 0%, #1a3a52 100%); }
+.cross-hero { background: linear-gradient(135deg, #1a3a52 0%, #0d8b8b 100%); }
+
+/* Cross-country grid */
+.cross-section { background: #f7f4ec; }
+.cross-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  padding: 40px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.cross-card {
+  background: #fff;
+  border-left: 4px solid #c8a951;
+  padding: 24px 28px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(26,58,82,0.06);
+}
+.cross-card h3 {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.15rem;
+  color: #1a3a52;
+  margin: 0 0 12px;
+  border-bottom: 1px solid #ecdfb8;
+  padding-bottom: 8px;
+}
+.cross-card p {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: #2c2c2c;
+  margin: 0;
+}
+
+/* Footer */
+.report-footer {
+  background: #1a3a52;
+  color: #f7f4ec;
+  padding: 56px 24px 40px;
+  text-align: center;
+}
+.footer-inner { max-width: 800px; margin: 0 auto; }
+.footer-credit {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin: 0 0 18px;
+}
+.footer-meta {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  opacity: 0.85;
+  margin: 0 0 18px;
+}
+.footer-links a {
+  color: #c8a951;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+.footer-links a:hover { border-bottom-color: #c8a951; }
+.footer-disclaimer {
+  font-size: 0.78rem;
+  opacity: 0.6;
+  margin: 24px 0 0;
+  font-style: italic;
+}
+
+
+<footer>
+  <p>© 2026 富山県インバウンド ペルソナ図鑑 ／ 公社 とやま観光推進機構</p>
+  <p style="margin-top:14px;">
+    <a href="https://toyamakankosuishinkiko.github.io/toyama_inbound_persona/">国別特徴レポート</a>
+    <a href="#tw">8か国の図鑑へ戻る</a>
+  </p>
+</footer>
+
+</body>
+</html>
